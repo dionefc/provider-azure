@@ -138,7 +138,7 @@ type SiteConfigAutoHealSettingTriggerStatusCodeInitParameters struct {
 	SubStatus *float64 `json:"subStatus,omitempty" tf:"sub_status,omitempty"`
 
 	// The Win32 Status Code of the Request.
-	Win32Status *string `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
+	Win32Status *float64 `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
 }
 
 type SiteConfigAutoHealSettingTriggerStatusCodeObservation struct {
@@ -159,7 +159,7 @@ type SiteConfigAutoHealSettingTriggerStatusCodeObservation struct {
 	SubStatus *float64 `json:"subStatus,omitempty" tf:"sub_status,omitempty"`
 
 	// The Win32 Status Code of the Request.
-	Win32Status *string `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
+	Win32Status *float64 `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
 }
 
 type SiteConfigAutoHealSettingTriggerStatusCodeParameters struct {
@@ -186,7 +186,7 @@ type SiteConfigAutoHealSettingTriggerStatusCodeParameters struct {
 
 	// The Win32 Status Code of the Request.
 	// +kubebuilder:validation:Optional
-	Win32Status *string `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
+	Win32Status *float64 `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
 }
 
 type SiteConfigVirtualApplicationInitParameters struct {
@@ -1273,8 +1273,8 @@ type WindowsWebAppSlotAuthSettingsV2InitParameters struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []WindowsWebAppSlotAuthSettingsV2CustomOidcV2InitParameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -1567,8 +1567,8 @@ type WindowsWebAppSlotAuthSettingsV2Observation struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []WindowsWebAppSlotAuthSettingsV2CustomOidcV2Observation `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -1654,8 +1654,8 @@ type WindowsWebAppSlotAuthSettingsV2Parameters struct {
 	// +kubebuilder:validation:Optional
 	CustomOidcV2 []WindowsWebAppSlotAuthSettingsV2CustomOidcV2Parameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	// +kubebuilder:validation:Optional
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
@@ -2011,6 +2011,9 @@ type WindowsWebAppSlotInitParameters struct {
 	// A logs block as defined below.
 	Logs []WindowsWebAppSlotLogsInitParameters `json:"logs,omitempty" tf:"logs,omitempty"`
 
+	// Should public network access be enabled for the Web App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
+
 	// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Windows Web App will be used.
 	ServicePlanID *string `json:"servicePlanId,omitempty" tf:"service_plan_id,omitempty"`
 
@@ -2298,6 +2301,9 @@ type WindowsWebAppSlotObservation struct {
 	// A comma separated list of outbound IP addresses - such as 52.23.25.3,52.143.43.12,52.143.43.17 - not all of which are necessarily in use. Superset of outbound_ip_addresses.
 	PossibleOutboundIPAddresses *string `json:"possibleOutboundIpAddresses,omitempty" tf:"possible_outbound_ip_addresses,omitempty"`
 
+	// Should public network access be enabled for the Web App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
+
 	// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Windows Web App will be used.
 	ServicePlanID *string `json:"servicePlanId,omitempty" tf:"service_plan_id,omitempty"`
 
@@ -2391,6 +2397,10 @@ type WindowsWebAppSlotParameters struct {
 	// +kubebuilder:validation:Optional
 	Logs []WindowsWebAppSlotLogsParameters `json:"logs,omitempty" tf:"logs,omitempty"`
 
+	// Should public network access be enabled for the Web App. Defaults to true.
+	// +kubebuilder:validation:Optional
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
+
 	// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Windows Web App will be used.
 	// +kubebuilder:validation:Optional
 	ServicePlanID *string `json:"servicePlanId,omitempty" tf:"service_plan_id,omitempty"`
@@ -2432,14 +2442,21 @@ type WindowsWebAppSlotSiteConfigApplicationStackInitParameters struct {
 	// The Application Stack for the Windows Web App. Possible values include dotnet, dotnetcore, node, python, php, and java.
 	CurrentStack *string `json:"currentStack,omitempty" tf:"current_stack,omitempty"`
 
-	// The name of the Docker Container. For example azure-app-service/samples/aspnethelloworld
+	// The name which should be used for this Windows Web App Slot. Changing this forces a new Windows Web App Slot to be created.
 	DockerContainerName *string `json:"dockerContainerName,omitempty" tf:"docker_container_name,omitempty"`
 
-	// The registry Host on which the specified Docker Container can be located. For example mcr.microsoft.com
 	DockerContainerRegistry *string `json:"dockerContainerRegistry,omitempty" tf:"docker_container_registry,omitempty"`
 
-	// The Image Tag of the specified Docker Container to use. For example latest
 	DockerContainerTag *string `json:"dockerContainerTag,omitempty" tf:"docker_container_tag,omitempty"`
+
+	// The docker image, including tag, to be used. e.g. azure-app-service/windows/parkingpage:latest.
+	DockerImageName *string `json:"dockerImageName,omitempty" tf:"docker_image_name,omitempty"`
+
+	// The URL of the container registry where the docker_image_name is located. e.g. https://index.docker.io or https://mcr.microsoft.com. This value is required with docker_image_name.
+	DockerRegistryURL *string `json:"dockerRegistryUrl,omitempty" tf:"docker_registry_url,omitempty"`
+
+	// The User Name to use for authentication against the registry to pull the image.
+	DockerRegistryUsername *string `json:"dockerRegistryUsername,omitempty" tf:"docker_registry_username,omitempty"`
 
 	// The version of .NET to use when current_stack is set to dotnetcore. Possible values include v4.0.
 	// The version of DotNetCore to use.
@@ -2479,14 +2496,21 @@ type WindowsWebAppSlotSiteConfigApplicationStackObservation struct {
 	// The Application Stack for the Windows Web App. Possible values include dotnet, dotnetcore, node, python, php, and java.
 	CurrentStack *string `json:"currentStack,omitempty" tf:"current_stack,omitempty"`
 
-	// The name of the Docker Container. For example azure-app-service/samples/aspnethelloworld
+	// The name which should be used for this Windows Web App Slot. Changing this forces a new Windows Web App Slot to be created.
 	DockerContainerName *string `json:"dockerContainerName,omitempty" tf:"docker_container_name,omitempty"`
 
-	// The registry Host on which the specified Docker Container can be located. For example mcr.microsoft.com
 	DockerContainerRegistry *string `json:"dockerContainerRegistry,omitempty" tf:"docker_container_registry,omitempty"`
 
-	// The Image Tag of the specified Docker Container to use. For example latest
 	DockerContainerTag *string `json:"dockerContainerTag,omitempty" tf:"docker_container_tag,omitempty"`
+
+	// The docker image, including tag, to be used. e.g. azure-app-service/windows/parkingpage:latest.
+	DockerImageName *string `json:"dockerImageName,omitempty" tf:"docker_image_name,omitempty"`
+
+	// The URL of the container registry where the docker_image_name is located. e.g. https://index.docker.io or https://mcr.microsoft.com. This value is required with docker_image_name.
+	DockerRegistryURL *string `json:"dockerRegistryUrl,omitempty" tf:"docker_registry_url,omitempty"`
+
+	// The User Name to use for authentication against the registry to pull the image.
+	DockerRegistryUsername *string `json:"dockerRegistryUsername,omitempty" tf:"docker_registry_username,omitempty"`
 
 	// The version of .NET to use when current_stack is set to dotnetcore. Possible values include v4.0.
 	// The version of DotNetCore to use.
@@ -2527,17 +2551,31 @@ type WindowsWebAppSlotSiteConfigApplicationStackParameters struct {
 	// +kubebuilder:validation:Optional
 	CurrentStack *string `json:"currentStack,omitempty" tf:"current_stack,omitempty"`
 
-	// The name of the Docker Container. For example azure-app-service/samples/aspnethelloworld
+	// The name which should be used for this Windows Web App Slot. Changing this forces a new Windows Web App Slot to be created.
 	// +kubebuilder:validation:Optional
 	DockerContainerName *string `json:"dockerContainerName,omitempty" tf:"docker_container_name,omitempty"`
 
-	// The registry Host on which the specified Docker Container can be located. For example mcr.microsoft.com
 	// +kubebuilder:validation:Optional
 	DockerContainerRegistry *string `json:"dockerContainerRegistry,omitempty" tf:"docker_container_registry,omitempty"`
 
-	// The Image Tag of the specified Docker Container to use. For example latest
 	// +kubebuilder:validation:Optional
 	DockerContainerTag *string `json:"dockerContainerTag,omitempty" tf:"docker_container_tag,omitempty"`
+
+	// The docker image, including tag, to be used. e.g. azure-app-service/windows/parkingpage:latest.
+	// +kubebuilder:validation:Optional
+	DockerImageName *string `json:"dockerImageName,omitempty" tf:"docker_image_name,omitempty"`
+
+	// The User Name to use for authentication against the registry to pull the image.
+	// +kubebuilder:validation:Optional
+	DockerRegistryPasswordSecretRef *v1.SecretKeySelector `json:"dockerRegistryPasswordSecretRef,omitempty" tf:"-"`
+
+	// The URL of the container registry where the docker_image_name is located. e.g. https://index.docker.io or https://mcr.microsoft.com. This value is required with docker_image_name.
+	// +kubebuilder:validation:Optional
+	DockerRegistryURL *string `json:"dockerRegistryUrl,omitempty" tf:"docker_registry_url,omitempty"`
+
+	// The User Name to use for authentication against the registry to pull the image.
+	// +kubebuilder:validation:Optional
+	DockerRegistryUsername *string `json:"dockerRegistryUsername,omitempty" tf:"docker_registry_username,omitempty"`
 
 	// The version of .NET to use when current_stack is set to dotnetcore. Possible values include v4.0.
 	// The version of DotNetCore to use.

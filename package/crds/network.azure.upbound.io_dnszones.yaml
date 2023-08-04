@@ -159,7 +159,8 @@ spec:
                           type: number
                         hostName:
                           description: The domain name of the authoritative name server
-                            for the SOA record.
+                            for the SOA record. If not set, computed value from Azure
+                            will be used.
                           type: string
                         minimumTtl:
                           description: The minimum Time To Live for the SOA record.
@@ -222,7 +223,8 @@ spec:
                           type: number
                         hostName:
                           description: The domain name of the authoritative name server
-                            for the SOA record.
+                            for the SOA record. If not set, computed value from Azure
+                            will be used.
                           type: string
                         minimumTtl:
                           description: The minimum Time To Live for the SOA record.
@@ -496,7 +498,8 @@ spec:
                           type: string
                         hostName:
                           description: The domain name of the authoritative name server
-                            for the SOA record.
+                            for the SOA record. If not set, computed value from Azure
+                            will be used.
                           type: string
                         minimumTtl:
                           description: The minimum Time To Live for the SOA record.

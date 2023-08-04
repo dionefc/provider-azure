@@ -239,11 +239,12 @@ spec:
                     type: object
                   targetResourceId:
                     description: The ID of the target resource. Changing this forces
-                      a new resource to be created. Possible values are Postgres,
-                      PostgresFlexible, Mysql, Sql, Redis, RedisEnterprise, CosmosCassandra,
-                      CosmosGremlin, CosmosMongo, CosmosSql, CosmosTable, StorageBlob,
-                      StorageQueue, StorageFile, StorageTable, AppConfig, EventHub,
-                      ServiceBus, SignalR, WebPubSub, ConfluentKafka.
+                      a new resource to be created. Possible target resources are
+                      Postgres, PostgresFlexible, Mysql, Sql, Redis, RedisEnterprise,
+                      CosmosCassandra, CosmosGremlin, CosmosMongo, CosmosSql, CosmosTable,
+                      StorageBlob, StorageQueue, StorageFile, StorageTable, AppConfig,
+                      EventHub, ServiceBus, SignalR, WebPubSub, ConfluentKafka. The
+                      integration guide can be found here.
                     type: string
                   targetResourceIdRef:
                     description: Reference to a SQLDatabase in cosmosdb to populate
@@ -672,11 +673,12 @@ spec:
                     type: string
                   targetResourceId:
                     description: The ID of the target resource. Changing this forces
-                      a new resource to be created. Possible values are Postgres,
-                      PostgresFlexible, Mysql, Sql, Redis, RedisEnterprise, CosmosCassandra,
-                      CosmosGremlin, CosmosMongo, CosmosSql, CosmosTable, StorageBlob,
-                      StorageQueue, StorageFile, StorageTable, AppConfig, EventHub,
-                      ServiceBus, SignalR, WebPubSub, ConfluentKafka.
+                      a new resource to be created. Possible target resources are
+                      Postgres, PostgresFlexible, Mysql, Sql, Redis, RedisEnterprise,
+                      CosmosCassandra, CosmosGremlin, CosmosMongo, CosmosSql, CosmosTable,
+                      StorageBlob, StorageQueue, StorageFile, StorageTable, AppConfig,
+                      EventHub, ServiceBus, SignalR, WebPubSub, ConfluentKafka. The
+                      integration guide can be found here.
                     type: string
                   vnetSolution:
                     description: The type of the VNet solution. Possible values are

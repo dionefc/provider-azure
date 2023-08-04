@@ -183,6 +183,9 @@ type OsDiskInitParameters struct {
 	// Specifies the caching mode as ReadWrite, ReadOnly, or None. The default is None.
 	Caching *string `json:"caching,omitempty" tf:"caching,omitempty"`
 
+	// The ID of the Disk Encryption Set which should be used to encrypt this image.
+	DiskEncryptionSetID *string `json:"diskEncryptionSetId,omitempty" tf:"disk_encryption_set_id,omitempty"`
+
 	// Specifies the ID of the managed disk resource that you want to use to create the image.
 	ManagedDiskID *string `json:"managedDiskId,omitempty" tf:"managed_disk_id,omitempty"`
 
@@ -192,7 +195,7 @@ type OsDiskInitParameters struct {
 	// Specifies the type of operating system contained in the virtual machine image. Possible values are: Windows or Linux.
 	OsType *string `json:"osType,omitempty" tf:"os_type,omitempty"`
 
-	// Specifies the size of the image to be created. The target size can't be smaller than the source size.
+	// Specifies the size of the image to be created. Changing this forces a new resource to be created.
 	SizeGb *float64 `json:"sizeGb,omitempty" tf:"size_gb,omitempty"`
 }
 
@@ -204,6 +207,9 @@ type OsDiskObservation struct {
 	// Specifies the caching mode as ReadWrite, ReadOnly, or None. The default is None.
 	Caching *string `json:"caching,omitempty" tf:"caching,omitempty"`
 
+	// The ID of the Disk Encryption Set which should be used to encrypt this image.
+	DiskEncryptionSetID *string `json:"diskEncryptionSetId,omitempty" tf:"disk_encryption_set_id,omitempty"`
+
 	// Specifies the ID of the managed disk resource that you want to use to create the image.
 	ManagedDiskID *string `json:"managedDiskId,omitempty" tf:"managed_disk_id,omitempty"`
 
@@ -213,7 +219,7 @@ type OsDiskObservation struct {
 	// Specifies the type of operating system contained in the virtual machine image. Possible values are: Windows or Linux.
 	OsType *string `json:"osType,omitempty" tf:"os_type,omitempty"`
 
-	// Specifies the size of the image to be created. The target size can't be smaller than the source size.
+	// Specifies the size of the image to be created. Changing this forces a new resource to be created.
 	SizeGb *float64 `json:"sizeGb,omitempty" tf:"size_gb,omitempty"`
 }
 
@@ -227,6 +233,10 @@ type OsDiskParameters struct {
 	// +kubebuilder:validation:Optional
 	Caching *string `json:"caching,omitempty" tf:"caching,omitempty"`
 
+	// The ID of the Disk Encryption Set which should be used to encrypt this image.
+	// +kubebuilder:validation:Optional
+	DiskEncryptionSetID *string `json:"diskEncryptionSetId,omitempty" tf:"disk_encryption_set_id,omitempty"`
+
 	// Specifies the ID of the managed disk resource that you want to use to create the image.
 	// +kubebuilder:validation:Optional
 	ManagedDiskID *string `json:"managedDiskId,omitempty" tf:"managed_disk_id,omitempty"`
@@ -239,7 +249,7 @@ type OsDiskParameters struct {
 	// +kubebuilder:validation:Optional
 	OsType *string `json:"osType,omitempty" tf:"os_type,omitempty"`
 
-	// Specifies the size of the image to be created. The target size can't be smaller than the source size.
+	// Specifies the size of the image to be created. Changing this forces a new resource to be created.
 	// +kubebuilder:validation:Optional
 	SizeGb *float64 `json:"sizeGb,omitempty" tf:"size_gb,omitempty"`
 }

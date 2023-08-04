@@ -675,11 +675,15 @@ spec:
                             type: object
                           type: array
                         defaultProvider:
-                          description: The Default Authentication Provider to use
-                            when more than one Authentication Provider is configured
-                            and the unauthenticated_action is set to RedirectToLoginPage.
-                            The Default Authentication Provider to use when the `unauthenticated_action`
-                            is set to `RedirectToLoginPage`.
+                          description: 'The Default Authentication Provider to use
+                            when the unauthenticated_action is set to RedirectToLoginPage.
+                            Possible values include: apple, azureactivedirectory,
+                            facebook, github, google, twitter and the name of your
+                            custom_oidc_v2 provider. The Default Authentication Provider
+                            to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+                            Possible values include: `apple`, `azureactivedirectory`,
+                            `facebook`, `github`, `google`, `twitter` and the `name`
+                            of your `custom_oidc_v2` provider.'
                           type: string
                         excludedPaths:
                           description: The paths which should be excluded from the
@@ -1218,6 +1222,10 @@ spec:
                       App Slot. Changing this forces a new Linux Web App Slot to be
                       created.
                     type: string
+                  publicNetworkAccessEnabled:
+                    description: Should public network access be enabled for the Web
+                      App. Defaults to true.
+                    type: boolean
                   servicePlanId:
                     description: The ID of the Service Plan in which to run this slot.
                       If not specified the same Service Plan as the Linux Web App
@@ -1247,11 +1255,40 @@ spec:
                           items:
                             properties:
                               dockerImage:
-                                description: The Docker image reference, including
-                                  repository host as needed.
+                                type: string
+                              dockerImageName:
+                                description: The docker image, including tag, to be
+                                  used. e.g. appsvc/staticsite:latest.
                                 type: string
                               dockerImageTag:
-                                description: The image Tag to use. e.g. latest.
+                                type: string
+                              dockerRegistryPasswordSecretRef:
+                                description: The User Name to use for authentication
+                                  against the registry to pull the image.
+                                properties:
+                                  key:
+                                    description: The key to select.
+                                    type: string
+                                  name:
+                                    description: Name of the secret.
+                                    type: string
+                                  namespace:
+                                    description: Namespace of the secret.
+                                    type: string
+                                required:
+                                - key
+                                - name
+                                - namespace
+                                type: object
+                              dockerRegistryUrl:
+                                description: The URL of the container registry where
+                                  the docker_image_name is located. e.g. https://index.docker.io
+                                  or https://mcr.microsoft.com. This value is required
+                                  with docker_image_name.
+                                type: string
+                              dockerRegistryUsername:
+                                description: The User Name to use for authentication
+                                  against the registry to pull the image.
                                 type: string
                               dotnetVersion:
                                 description: The version of .NET to use. Possible
@@ -1393,7 +1430,7 @@ spec:
                                           win32Status:
                                             description: The Win32 Status Code of
                                               the Request.
-                                            type: string
+                                            type: number
                                         type: object
                                       type: array
                                   type: object
@@ -2362,11 +2399,15 @@ spec:
                             type: object
                           type: array
                         defaultProvider:
-                          description: The Default Authentication Provider to use
-                            when more than one Authentication Provider is configured
-                            and the unauthenticated_action is set to RedirectToLoginPage.
-                            The Default Authentication Provider to use when the `unauthenticated_action`
-                            is set to `RedirectToLoginPage`.
+                          description: 'The Default Authentication Provider to use
+                            when the unauthenticated_action is set to RedirectToLoginPage.
+                            Possible values include: apple, azureactivedirectory,
+                            facebook, github, google, twitter and the name of your
+                            custom_oidc_v2 provider. The Default Authentication Provider
+                            to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+                            Possible values include: `apple`, `azureactivedirectory`,
+                            `facebook`, `github`, `google`, `twitter` and the `name`
+                            of your `custom_oidc_v2` provider.'
                           type: string
                         excludedPaths:
                           description: The paths which should be excluded from the
@@ -2845,6 +2886,10 @@ spec:
                       App Slot. Changing this forces a new Linux Web App Slot to be
                       created.
                     type: string
+                  publicNetworkAccessEnabled:
+                    description: Should public network access be enabled for the Web
+                      App. Defaults to true.
+                    type: boolean
                   servicePlanId:
                     description: The ID of the Service Plan in which to run this slot.
                       If not specified the same Service Plan as the Linux Web App
@@ -2874,11 +2919,22 @@ spec:
                           items:
                             properties:
                               dockerImage:
-                                description: The Docker image reference, including
-                                  repository host as needed.
+                                type: string
+                              dockerImageName:
+                                description: The docker image, including tag, to be
+                                  used. e.g. appsvc/staticsite:latest.
                                 type: string
                               dockerImageTag:
-                                description: The image Tag to use. e.g. latest.
+                                type: string
+                              dockerRegistryUrl:
+                                description: The URL of the container registry where
+                                  the docker_image_name is located. e.g. https://index.docker.io
+                                  or https://mcr.microsoft.com. This value is required
+                                  with docker_image_name.
+                                type: string
+                              dockerRegistryUsername:
+                                description: The User Name to use for authentication
+                                  against the registry to pull the image.
                                 type: string
                               dotnetVersion:
                                 description: The version of .NET to use. Possible
@@ -3020,7 +3076,7 @@ spec:
                                           win32Status:
                                             description: The Win32 Status Code of
                                               the Request.
-                                            type: string
+                                            type: number
                                         type: object
                                       type: array
                                   type: object
@@ -3969,11 +4025,15 @@ spec:
                             type: object
                           type: array
                         defaultProvider:
-                          description: The Default Authentication Provider to use
-                            when more than one Authentication Provider is configured
-                            and the unauthenticated_action is set to RedirectToLoginPage.
-                            The Default Authentication Provider to use when the `unauthenticated_action`
-                            is set to `RedirectToLoginPage`.
+                          description: 'The Default Authentication Provider to use
+                            when the unauthenticated_action is set to RedirectToLoginPage.
+                            Possible values include: apple, azureactivedirectory,
+                            facebook, github, google, twitter and the name of your
+                            custom_oidc_v2 provider. The Default Authentication Provider
+                            to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+                            Possible values include: `apple`, `azureactivedirectory`,
+                            `facebook`, `github`, `google`, `twitter` and the `name`
+                            of your `custom_oidc_v2` provider.'
                           type: string
                         excludedPaths:
                           description: The paths which should be excluded from the
@@ -4497,6 +4557,10 @@ spec:
                       such as 52.23.25.3,52.143.43.12,52.143.43.17 - not all of which
                       are necessarily in use. Superset of outbound_ip_addresses.
                     type: string
+                  publicNetworkAccessEnabled:
+                    description: Should public network access be enabled for the Web
+                      App. Defaults to true.
+                    type: boolean
                   servicePlanId:
                     description: The ID of the Service Plan in which to run this slot.
                       If not specified the same Service Plan as the Linux Web App
@@ -4526,11 +4590,22 @@ spec:
                           items:
                             properties:
                               dockerImage:
-                                description: The Docker image reference, including
-                                  repository host as needed.
+                                type: string
+                              dockerImageName:
+                                description: The docker image, including tag, to be
+                                  used. e.g. appsvc/staticsite:latest.
                                 type: string
                               dockerImageTag:
-                                description: The image Tag to use. e.g. latest.
+                                type: string
+                              dockerRegistryUrl:
+                                description: The URL of the container registry where
+                                  the docker_image_name is located. e.g. https://index.docker.io
+                                  or https://mcr.microsoft.com. This value is required
+                                  with docker_image_name.
+                                type: string
+                              dockerRegistryUsername:
+                                description: The User Name to use for authentication
+                                  against the registry to pull the image.
                                 type: string
                               dotnetVersion:
                                 description: The version of .NET to use. Possible
@@ -4672,7 +4747,7 @@ spec:
                                           win32Status:
                                             description: The Win32 Status Code of
                                               the Request.
-                                            type: string
+                                            type: number
                                         type: object
                                       type: array
                                   type: object

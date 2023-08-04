@@ -39,7 +39,7 @@ type ProviderInitParameters struct {
 	// The Azure Region where the Attestation Provider should exist. Changing this forces a new resource to be created.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
-	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the TPM Policy.
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
 	OpenEnclavePolicyBase64 *string `json:"openEnclavePolicyBase64,omitempty" tf:"open_enclave_policy_base64,omitempty"`
 
 	Policy []PolicyInitParameters `json:"policy,omitempty" tf:"policy,omitempty"`
@@ -47,13 +47,16 @@ type ProviderInitParameters struct {
 	// A valid X.509 certificate (Section 4 of RFC4648). Changing this forces a new resource to be created.
 	PolicySigningCertificateData *string `json:"policySigningCertificateData,omitempty" tf:"policy_signing_certificate_data,omitempty"`
 
-	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the TPM Policy.
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
+	SevSnpPolicyBase64 *string `json:"sevSnpPolicyBase64,omitempty" tf:"sev_snp_policy_base64,omitempty"`
+
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
 	SgxEnclavePolicyBase64 *string `json:"sgxEnclavePolicyBase64,omitempty" tf:"sgx_enclave_policy_base64,omitempty"`
 
 	// A mapping of tags which should be assigned to the Attestation Provider.
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
-	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the TPM Policy.
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
 	TpmPolicyBase64 *string `json:"tpmPolicyBase64,omitempty" tf:"tpm_policy_base64,omitempty"`
 }
 
@@ -68,7 +71,7 @@ type ProviderObservation struct {
 	// The Azure Region where the Attestation Provider should exist. Changing this forces a new resource to be created.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
-	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the TPM Policy.
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
 	OpenEnclavePolicyBase64 *string `json:"openEnclavePolicyBase64,omitempty" tf:"open_enclave_policy_base64,omitempty"`
 
 	Policy []PolicyObservation `json:"policy,omitempty" tf:"policy,omitempty"`
@@ -79,13 +82,16 @@ type ProviderObservation struct {
 	// The name of the Resource Group where the attestation provider should exist. Changing this forces a new resource to be created.
 	ResourceGroupName *string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
 
-	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the TPM Policy.
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
+	SevSnpPolicyBase64 *string `json:"sevSnpPolicyBase64,omitempty" tf:"sev_snp_policy_base64,omitempty"`
+
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
 	SgxEnclavePolicyBase64 *string `json:"sgxEnclavePolicyBase64,omitempty" tf:"sgx_enclave_policy_base64,omitempty"`
 
 	// A mapping of tags which should be assigned to the Attestation Provider.
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
-	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the TPM Policy.
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
 	TpmPolicyBase64 *string `json:"tpmPolicyBase64,omitempty" tf:"tpm_policy_base64,omitempty"`
 
 	// Trust model used for the Attestation Service.
@@ -98,7 +104,7 @@ type ProviderParameters struct {
 	// +kubebuilder:validation:Optional
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
-	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the TPM Policy.
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
 	// +kubebuilder:validation:Optional
 	OpenEnclavePolicyBase64 *string `json:"openEnclavePolicyBase64,omitempty" tf:"open_enclave_policy_base64,omitempty"`
 
@@ -122,7 +128,11 @@ type ProviderParameters struct {
 	// +kubebuilder:validation:Optional
 	ResourceGroupNameSelector *v1.Selector `json:"resourceGroupNameSelector,omitempty" tf:"-"`
 
-	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the TPM Policy.
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
+	// +kubebuilder:validation:Optional
+	SevSnpPolicyBase64 *string `json:"sevSnpPolicyBase64,omitempty" tf:"sev_snp_policy_base64,omitempty"`
+
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
 	// +kubebuilder:validation:Optional
 	SgxEnclavePolicyBase64 *string `json:"sgxEnclavePolicyBase64,omitempty" tf:"sgx_enclave_policy_base64,omitempty"`
 
@@ -130,7 +140,7 @@ type ProviderParameters struct {
 	// +kubebuilder:validation:Optional
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
-	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the TPM Policy.
+	// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
 	// +kubebuilder:validation:Optional
 	TpmPolicyBase64 *string `json:"tpmPolicyBase64,omitempty" tf:"tpm_policy_base64,omitempty"`
 }

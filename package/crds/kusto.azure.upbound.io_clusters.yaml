@@ -92,9 +92,6 @@ spec:
                       this forces a new resource to be created.
                     type: boolean
                   engine:
-                    description: . The engine type that will be used in the backend.
-                      Possible values are V2 and V3. Defaults to V2. Changing this
-                      forces a new Kusto Cluster to be created.
                     type: string
                   identity:
                     description: An identity block as defined below.
@@ -116,7 +113,10 @@ spec:
                     type: array
                   languageExtensions:
                     description: 'An list of language_extensions to enable. Valid
-                      values are: PYTHON and R.'
+                      values are: PYTHON, PYTHON_3.10.8 and R. PYTHON is used to specify
+                      Python 3.6.5 image and PYTHON_3.10.8 is used to specify Python
+                      3.10.8 image. Note that PYTHON_3.10.8 is only available in skus
+                      which support nested virtualization.'
                     items:
                       type: string
                     type: array
@@ -425,9 +425,6 @@ spec:
                       this forces a new resource to be created.
                     type: boolean
                   engine:
-                    description: . The engine type that will be used in the backend.
-                      Possible values are V2 and V3. Defaults to V2. Changing this
-                      forces a new Kusto Cluster to be created.
                     type: string
                   identity:
                     description: An identity block as defined below.
@@ -449,7 +446,10 @@ spec:
                     type: array
                   languageExtensions:
                     description: 'An list of language_extensions to enable. Valid
-                      values are: PYTHON and R.'
+                      values are: PYTHON, PYTHON_3.10.8 and R. PYTHON is used to specify
+                      Python 3.6.5 image and PYTHON_3.10.8 is used to specify Python
+                      3.10.8 image. Note that PYTHON_3.10.8 is only available in skus
+                      which support nested virtualization.'
                     items:
                       type: string
                     type: array
@@ -799,9 +799,6 @@ spec:
                       this forces a new resource to be created.
                     type: boolean
                   engine:
-                    description: . The engine type that will be used in the backend.
-                      Possible values are V2 and V3. Defaults to V2. Changing this
-                      forces a new Kusto Cluster to be created.
                     type: string
                   id:
                     description: The Kusto Cluster ID.
@@ -834,7 +831,10 @@ spec:
                     type: array
                   languageExtensions:
                     description: 'An list of language_extensions to enable. Valid
-                      values are: PYTHON and R.'
+                      values are: PYTHON, PYTHON_3.10.8 and R. PYTHON is used to specify
+                      Python 3.6.5 image and PYTHON_3.10.8 is used to specify Python
+                      3.10.8 image. Note that PYTHON_3.10.8 is only available in skus
+                      which support nested virtualization.'
                     items:
                       type: string
                     type: array

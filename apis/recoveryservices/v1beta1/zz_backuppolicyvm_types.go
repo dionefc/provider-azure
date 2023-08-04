@@ -230,6 +230,12 @@ type BackupPolicyVMRetentionMonthlyInitParameters struct {
 	// The number of monthly backups to keep. Must be between 1 and 9999
 	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
 
+	// The days of the month to retain backups of. Must be between 1 and 31.
+	Days []*float64 `json:"days,omitempty" tf:"days,omitempty"`
+
+	// Including the last day of the month, default to false.
+	IncludeLastDays *bool `json:"includeLastDays,omitempty" tf:"include_last_days,omitempty"`
+
 	// The weekday backups to retain . Must be one of Sunday, Monday, Tuesday, Wednesday, Thursday, Friday or Saturday.
 	Weekdays []*string `json:"weekdays,omitempty" tf:"weekdays,omitempty"`
 
@@ -241,6 +247,12 @@ type BackupPolicyVMRetentionMonthlyObservation struct {
 
 	// The number of monthly backups to keep. Must be between 1 and 9999
 	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+
+	// The days of the month to retain backups of. Must be between 1 and 31.
+	Days []*float64 `json:"days,omitempty" tf:"days,omitempty"`
+
+	// Including the last day of the month, default to false.
+	IncludeLastDays *bool `json:"includeLastDays,omitempty" tf:"include_last_days,omitempty"`
 
 	// The weekday backups to retain . Must be one of Sunday, Monday, Tuesday, Wednesday, Thursday, Friday or Saturday.
 	Weekdays []*string `json:"weekdays,omitempty" tf:"weekdays,omitempty"`
@@ -254,6 +266,14 @@ type BackupPolicyVMRetentionMonthlyParameters struct {
 	// The number of monthly backups to keep. Must be between 1 and 9999
 	// +kubebuilder:validation:Optional
 	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+
+	// The days of the month to retain backups of. Must be between 1 and 31.
+	// +kubebuilder:validation:Optional
+	Days []*float64 `json:"days,omitempty" tf:"days,omitempty"`
+
+	// Including the last day of the month, default to false.
+	// +kubebuilder:validation:Optional
+	IncludeLastDays *bool `json:"includeLastDays,omitempty" tf:"include_last_days,omitempty"`
 
 	// The weekday backups to retain . Must be one of Sunday, Monday, Tuesday, Wednesday, Thursday, Friday or Saturday.
 	// +kubebuilder:validation:Optional
@@ -298,6 +318,12 @@ type BackupPolicyVMRetentionYearlyInitParameters struct {
 	// The number of yearly backups to keep. Must be between 1 and 9999
 	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
 
+	// The days of the month to retain backups of. Must be between 1 and 31.
+	Days []*float64 `json:"days,omitempty" tf:"days,omitempty"`
+
+	// Including the last day of the month, default to false.
+	IncludeLastDays *bool `json:"includeLastDays,omitempty" tf:"include_last_days,omitempty"`
+
 	// The months of the year to retain backups of. Must be one of January, February, March, April, May, June, July, August, September, October, November and December.
 	Months []*string `json:"months,omitempty" tf:"months,omitempty"`
 
@@ -312,6 +338,12 @@ type BackupPolicyVMRetentionYearlyObservation struct {
 
 	// The number of yearly backups to keep. Must be between 1 and 9999
 	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+
+	// The days of the month to retain backups of. Must be between 1 and 31.
+	Days []*float64 `json:"days,omitempty" tf:"days,omitempty"`
+
+	// Including the last day of the month, default to false.
+	IncludeLastDays *bool `json:"includeLastDays,omitempty" tf:"include_last_days,omitempty"`
 
 	// The months of the year to retain backups of. Must be one of January, February, March, April, May, June, July, August, September, October, November and December.
 	Months []*string `json:"months,omitempty" tf:"months,omitempty"`
@@ -328,6 +360,14 @@ type BackupPolicyVMRetentionYearlyParameters struct {
 	// The number of yearly backups to keep. Must be between 1 and 9999
 	// +kubebuilder:validation:Optional
 	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+
+	// The days of the month to retain backups of. Must be between 1 and 31.
+	// +kubebuilder:validation:Optional
+	Days []*float64 `json:"days,omitempty" tf:"days,omitempty"`
+
+	// Including the last day of the month, default to false.
+	// +kubebuilder:validation:Optional
+	IncludeLastDays *bool `json:"includeLastDays,omitempty" tf:"include_last_days,omitempty"`
 
 	// The months of the year to retain backups of. Must be one of January, February, March, April, May, June, July, August, September, October, November and December.
 	// +kubebuilder:validation:Optional

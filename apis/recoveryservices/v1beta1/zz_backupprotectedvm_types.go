@@ -21,13 +21,16 @@ type BackupProtectedVMInitParameters struct {
 	// A list of Disks' Logical Unit Numbers(LUN) to be included for VM Protection.
 	IncludeDiskLuns []*float64 `json:"includeDiskLuns,omitempty" tf:"include_disk_luns,omitempty"`
 
+	// Specifies Protection state of the backup. Possible values are Invalid, IRPending, Protected, ProtectionStopped, ProtectionError and ProtectionPaused.
+	ProtectionState *string `json:"protectionState,omitempty" tf:"protection_state,omitempty"`
+
 	// Specifies the ID of the VM to backup. Changing this forces a new resource to be created.
 	SourceVMID *string `json:"sourceVmId,omitempty" tf:"source_vm_id,omitempty"`
 }
 
 type BackupProtectedVMObservation struct {
 
-	// Specifies the id of the backup policy to use.
+	// Specifies the id of the backup policy to use. Required in creation or when protection_stopped is not specified.
 	BackupPolicyID *string `json:"backupPolicyId,omitempty" tf:"backup_policy_id,omitempty"`
 
 	// A list of Disks' Logical Unit Numbers(LUN) to be excluded for VM Protection.
@@ -38,6 +41,9 @@ type BackupProtectedVMObservation struct {
 
 	// A list of Disks' Logical Unit Numbers(LUN) to be included for VM Protection.
 	IncludeDiskLuns []*float64 `json:"includeDiskLuns,omitempty" tf:"include_disk_luns,omitempty"`
+
+	// Specifies Protection state of the backup. Possible values are Invalid, IRPending, Protected, ProtectionStopped, ProtectionError and ProtectionPaused.
+	ProtectionState *string `json:"protectionState,omitempty" tf:"protection_state,omitempty"`
 
 	// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
 	RecoveryVaultName *string `json:"recoveryVaultName,omitempty" tf:"recovery_vault_name,omitempty"`
@@ -51,7 +57,7 @@ type BackupProtectedVMObservation struct {
 
 type BackupProtectedVMParameters struct {
 
-	// Specifies the id of the backup policy to use.
+	// Specifies the id of the backup policy to use. Required in creation or when protection_stopped is not specified.
 	// +crossplane:generate:reference:type=github.com/upbound/provider-azure/apis/recoveryservices/v1beta1.BackupPolicyVM
 	// +crossplane:generate:reference:extractor=github.com/upbound/upjet/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -72,6 +78,10 @@ type BackupProtectedVMParameters struct {
 	// A list of Disks' Logical Unit Numbers(LUN) to be included for VM Protection.
 	// +kubebuilder:validation:Optional
 	IncludeDiskLuns []*float64 `json:"includeDiskLuns,omitempty" tf:"include_disk_luns,omitempty"`
+
+	// Specifies Protection state of the backup. Possible values are Invalid, IRPending, Protected, ProtectionStopped, ProtectionError and ProtectionPaused.
+	// +kubebuilder:validation:Optional
+	ProtectionState *string `json:"protectionState,omitempty" tf:"protection_state,omitempty"`
 
 	// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
 	// +crossplane:generate:reference:type=github.com/upbound/provider-azure/apis/recoveryservices/v1beta1.Vault

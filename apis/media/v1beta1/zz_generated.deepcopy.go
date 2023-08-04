@@ -3002,6 +3002,21 @@ func (in *CustomPresetInitParameters) DeepCopyInto(out *CustomPresetInitParamete
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.ExperimentalOptions != nil {
+		in, out := &in.ExperimentalOptions, &out.ExperimentalOptions
+		*out = make(map[string]*string, len(*in))
+		for key, val := range *in {
+			var outVal *string
+			if val == nil {
+				(*out)[key] = nil
+			} else {
+				in, out := &val, &outVal
+				*out = new(string)
+				**out = **in
+			}
+			(*out)[key] = outVal
+		}
+	}
 	if in.Filter != nil {
 		in, out := &in.Filter, &out.Filter
 		*out = make([]FilterInitParameters, len(*in))
@@ -3038,6 +3053,21 @@ func (in *CustomPresetObservation) DeepCopyInto(out *CustomPresetObservation) {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.ExperimentalOptions != nil {
+		in, out := &in.ExperimentalOptions, &out.ExperimentalOptions
+		*out = make(map[string]*string, len(*in))
+		for key, val := range *in {
+			var outVal *string
+			if val == nil {
+				(*out)[key] = nil
+			} else {
+				in, out := &val, &outVal
+				*out = new(string)
+				**out = **in
+			}
+			(*out)[key] = outVal
+		}
+	}
 	if in.Filter != nil {
 		in, out := &in.Filter, &out.Filter
 		*out = make([]FilterObservation, len(*in))
@@ -3072,6 +3102,21 @@ func (in *CustomPresetParameters) DeepCopyInto(out *CustomPresetParameters) {
 		*out = make([]CodecParameters, len(*in))
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
+		}
+	}
+	if in.ExperimentalOptions != nil {
+		in, out := &in.ExperimentalOptions, &out.ExperimentalOptions
+		*out = make(map[string]*string, len(*in))
+		for key, val := range *in {
+			var outVal *string
+			if val == nil {
+				(*out)[key] = nil
+			} else {
+				in, out := &val, &outVal
+				*out = new(string)
+				**out = **in
+			}
+			(*out)[key] = outVal
 		}
 	}
 	if in.Filter != nil {

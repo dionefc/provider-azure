@@ -180,6 +180,13 @@ spec:
                           description: The severity level of the event. Possible values
                             are Verbose, Informational, Warning, Error, and Critical.
                           type: string
+                        levels:
+                          description: A list of severity level of the event. Possible
+                            values are Verbose, Informational, Warning, Error, and
+                            Critical.
+                          items:
+                            type: string
+                          type: array
                         operationName:
                           description: 'The Resource Manager Role-Based Access Control
                             operation name. Supported operation should be of the form:
@@ -203,6 +210,12 @@ spec:
                           description: The name of resource group monitored by the
                             activity log alert.
                           type: string
+                        resourceGroups:
+                          description: A list of names of resource groups monitored
+                            by the activity log alert.
+                          items:
+                            type: string
+                          type: array
                         resourceHealth:
                           description: A block to define fine grain resource health
                             settings.
@@ -315,14 +328,32 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        resourceIds:
+                          description: A list of specific resources monitored by the
+                            activity log alert. It should be within one of the scopes.
+                          items:
+                            type: string
+                          type: array
                         resourceProvider:
                           description: The name of the resource provider monitored
                             by the activity log alert.
                           type: string
+                        resourceProviders:
+                          description: A list of names of resource providers monitored
+                            by the activity log alert.
+                          items:
+                            type: string
+                          type: array
                         resourceType:
                           description: The resource type monitored by the activity
                             log alert.
                           type: string
+                        resourceTypes:
+                          description: A list of resource types monitored by the activity
+                            log alert.
+                          items:
+                            type: string
+                          type: array
                         serviceHealth:
                           description: A block to define fine grain service health
                             settings.
@@ -354,9 +385,20 @@ spec:
                           description: The status of the event. For example, Started,
                             Failed, or Succeeded.
                           type: string
+                        statuses:
+                          description: A list of status of the event. For example,
+                            Started, Failed, or Succeeded.
+                          items:
+                            type: string
+                          type: array
                         subStatus:
                           description: The sub status of the event.
                           type: string
+                        subStatuses:
+                          description: A list of sub status of the event.
+                          items:
+                            type: string
+                          type: array
                       type: object
                     type: array
                   description:
@@ -584,6 +626,13 @@ spec:
                           description: The severity level of the event. Possible values
                             are Verbose, Informational, Warning, Error, and Critical.
                           type: string
+                        levels:
+                          description: A list of severity level of the event. Possible
+                            values are Verbose, Informational, Warning, Error, and
+                            Critical.
+                          items:
+                            type: string
+                          type: array
                         operationName:
                           description: 'The Resource Manager Role-Based Access Control
                             operation name. Supported operation should be of the form:
@@ -607,6 +656,12 @@ spec:
                           description: The name of resource group monitored by the
                             activity log alert.
                           type: string
+                        resourceGroups:
+                          description: A list of names of resource groups monitored
+                            by the activity log alert.
+                          items:
+                            type: string
+                          type: array
                         resourceHealth:
                           description: A block to define fine grain resource health
                             settings.
@@ -637,14 +692,32 @@ spec:
                                 type: array
                             type: object
                           type: array
+                        resourceIds:
+                          description: A list of specific resources monitored by the
+                            activity log alert. It should be within one of the scopes.
+                          items:
+                            type: string
+                          type: array
                         resourceProvider:
                           description: The name of the resource provider monitored
                             by the activity log alert.
                           type: string
+                        resourceProviders:
+                          description: A list of names of resource providers monitored
+                            by the activity log alert.
+                          items:
+                            type: string
+                          type: array
                         resourceType:
                           description: The resource type monitored by the activity
                             log alert.
                           type: string
+                        resourceTypes:
+                          description: A list of resource types monitored by the activity
+                            log alert.
+                          items:
+                            type: string
+                          type: array
                         serviceHealth:
                           description: A block to define fine grain service health
                             settings.
@@ -676,9 +749,20 @@ spec:
                           description: The status of the event. For example, Started,
                             Failed, or Succeeded.
                           type: string
+                        statuses:
+                          description: A list of status of the event. For example,
+                            Started, Failed, or Succeeded.
+                          items:
+                            type: string
+                          type: array
                         subStatus:
                           description: The sub status of the event.
                           type: string
+                        subStatuses:
+                          description: A list of sub status of the event.
+                          items:
+                            type: string
+                          type: array
                       type: object
                     type: array
                   description:
@@ -944,6 +1028,13 @@ spec:
                           description: The severity level of the event. Possible values
                             are Verbose, Informational, Warning, Error, and Critical.
                           type: string
+                        levels:
+                          description: A list of severity level of the event. Possible
+                            values are Verbose, Informational, Warning, Error, and
+                            Critical.
+                          items:
+                            type: string
+                          type: array
                         operationName:
                           description: 'The Resource Manager Role-Based Access Control
                             operation name. Supported operation should be of the form:
@@ -967,6 +1058,12 @@ spec:
                           description: The name of resource group monitored by the
                             activity log alert.
                           type: string
+                        resourceGroups:
+                          description: A list of names of resource groups monitored
+                            by the activity log alert.
+                          items:
+                            type: string
+                          type: array
                         resourceHealth:
                           description: A block to define fine grain resource health
                             settings.
@@ -1001,14 +1098,32 @@ spec:
                           description: The specific resource monitored by the activity
                             log alert. It should be within one of the scopes.
                           type: string
+                        resourceIds:
+                          description: A list of specific resources monitored by the
+                            activity log alert. It should be within one of the scopes.
+                          items:
+                            type: string
+                          type: array
                         resourceProvider:
                           description: The name of the resource provider monitored
                             by the activity log alert.
                           type: string
+                        resourceProviders:
+                          description: A list of names of resource providers monitored
+                            by the activity log alert.
+                          items:
+                            type: string
+                          type: array
                         resourceType:
                           description: The resource type monitored by the activity
                             log alert.
                           type: string
+                        resourceTypes:
+                          description: A list of resource types monitored by the activity
+                            log alert.
+                          items:
+                            type: string
+                          type: array
                         serviceHealth:
                           description: A block to define fine grain service health
                             settings.
@@ -1040,9 +1155,20 @@ spec:
                           description: The status of the event. For example, Started,
                             Failed, or Succeeded.
                           type: string
+                        statuses:
+                          description: A list of status of the event. For example,
+                            Started, Failed, or Succeeded.
+                          items:
+                            type: string
+                          type: array
                         subStatus:
                           description: The sub status of the event.
                           type: string
+                        subStatuses:
+                          description: A list of sub status of the event.
+                          items:
+                            type: string
+                          type: array
                       type: object
                     type: array
                   description:

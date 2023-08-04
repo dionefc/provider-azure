@@ -273,8 +273,8 @@ type ApplicationStackInitParameters struct {
 	// The version of PowerShell Core to use. Possibles values are `7`, and `7.2`
 	PowershellCoreVersion *string `json:"powershellCoreVersion,omitempty" tf:"powershell_core_version,omitempty"`
 
-	// The version of Python to run. Possible values are 3.10, 3.9, 3.8 and 3.7.
-	// The version of Python to use. Possible values include `3.10`, `3.9`, `3.8`, and `3.7`.
+	// The version of Python to run. Possible values are 3.11, 3.10, 3.9, 3.8 and 3.7.
+	// The version of Python to use. Possible values include `3.11`, `3.10`, `3.9`, `3.8`, and `3.7`.
 	PythonVersion *string `json:"pythonVersion,omitempty" tf:"python_version,omitempty"`
 
 	// Should the Linux Function App use a custom runtime?
@@ -307,8 +307,8 @@ type ApplicationStackObservation struct {
 	// The version of PowerShell Core to use. Possibles values are `7`, and `7.2`
 	PowershellCoreVersion *string `json:"powershellCoreVersion,omitempty" tf:"powershell_core_version,omitempty"`
 
-	// The version of Python to run. Possible values are 3.10, 3.9, 3.8 and 3.7.
-	// The version of Python to use. Possible values include `3.10`, `3.9`, `3.8`, and `3.7`.
+	// The version of Python to run. Possible values are 3.11, 3.10, 3.9, 3.8 and 3.7.
+	// The version of Python to use. Possible values include `3.11`, `3.10`, `3.9`, `3.8`, and `3.7`.
 	PythonVersion *string `json:"pythonVersion,omitempty" tf:"python_version,omitempty"`
 
 	// Should the Linux Function App use a custom runtime?
@@ -346,8 +346,8 @@ type ApplicationStackParameters struct {
 	// +kubebuilder:validation:Optional
 	PowershellCoreVersion *string `json:"powershellCoreVersion,omitempty" tf:"powershell_core_version,omitempty"`
 
-	// The version of Python to run. Possible values are 3.10, 3.9, 3.8 and 3.7.
-	// The version of Python to use. Possible values include `3.10`, `3.9`, `3.8`, and `3.7`.
+	// The version of Python to run. Possible values are 3.11, 3.10, 3.9, 3.8 and 3.7.
+	// The version of Python to use. Possible values include `3.11`, `3.10`, `3.9`, `3.8`, and `3.7`.
 	// +kubebuilder:validation:Optional
 	PythonVersion *string `json:"pythonVersion,omitempty" tf:"python_version,omitempty"`
 
@@ -383,8 +383,8 @@ type AuthSettingsV2InitParameters struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []CustomOidcV2InitParameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -464,8 +464,8 @@ type AuthSettingsV2Observation struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []CustomOidcV2Observation `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -551,8 +551,8 @@ type AuthSettingsV2Parameters struct {
 	// +kubebuilder:validation:Optional
 	CustomOidcV2 []CustomOidcV2Parameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	// +kubebuilder:validation:Optional
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
@@ -1658,6 +1658,9 @@ type LinuxFunctionAppInitParameters struct {
 	// Specifies the name of the Function App.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// Should public network access be enabled for the Function App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
+
 	// A site_config block as defined below.
 	SiteConfig []LinuxFunctionAppSiteConfigInitParameters `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
 
@@ -1774,6 +1777,9 @@ type LinuxFunctionAppObservation struct {
 
 	// A comma separated list of possible outbound IP addresses as a string. For example 52.23.25.3,52.143.43.12,52.143.43.17. This is a superset of outbound_ip_addresses.
 	PossibleOutboundIPAddresses *string `json:"possibleOutboundIpAddresses,omitempty" tf:"possible_outbound_ip_addresses,omitempty"`
+
+	// Should public network access be enabled for the Function App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
 
 	// The name of the Resource Group where the Linux Function App should exist. Changing this forces a new Linux Function App to be created.
 	ResourceGroupName *string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
@@ -1899,6 +1905,10 @@ type LinuxFunctionAppParameters struct {
 	// Specifies the name of the Function App.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// Should public network access be enabled for the Function App. Defaults to true.
+	// +kubebuilder:validation:Optional
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
 
 	// The name of the Resource Group where the Linux Function App should exist. Changing this forces a new Linux Function App to be created.
 	// +crossplane:generate:reference:type=github.com/upbound/provider-azure/apis/azure/v1beta1.ResourceGroup

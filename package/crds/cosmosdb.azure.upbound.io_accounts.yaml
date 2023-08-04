@@ -127,7 +127,8 @@ spec:
                             are AllowSelfServeUpgradeToMongo36, DisableRateLimitingResponses,
                             EnableAggregationPipeline, EnableCassandra, EnableGremlin,
                             EnableMongo, EnableMongo16MBDocumentSupport, EnableMongoRetryableWrites,
-                            EnableMongoRoleBasedAccessControl, EnableServerless, EnableTable,
+                            EnableMongoRoleBasedAccessControl, EnablePartialUniqueIndex,
+                            EnableServerless, EnableTable, EnableTtlOnCustomPath,
                             EnableUniqueCompoundNestedDocs, MongoDBv3.4 and mongoEnableDocLevelTTL.
                           type: string
                       type: object
@@ -200,7 +201,8 @@ spec:
                           type: array
                         maxAgeInSeconds:
                           description: The number of seconds the client should cache
-                            a preflight response.
+                            a preflight response. Possible values are between 1 and
+                            2147483647.
                           type: number
                       type: object
                     type: array
@@ -212,6 +214,7 @@ spec:
                   defaultIdentityType:
                     description: The default identity for accessing Key Vault. Possible
                       values are FirstPartyIdentity, SystemAssignedIdentity or UserAssignedIdentity.
+                      Defaults to FirstPartyIdentity.
                     type: string
                   enableAutomaticFailover:
                     description: Enable automatic failover for this Cosmos DB account.
@@ -605,7 +608,8 @@ spec:
                             are AllowSelfServeUpgradeToMongo36, DisableRateLimitingResponses,
                             EnableAggregationPipeline, EnableCassandra, EnableGremlin,
                             EnableMongo, EnableMongo16MBDocumentSupport, EnableMongoRetryableWrites,
-                            EnableMongoRoleBasedAccessControl, EnableServerless, EnableTable,
+                            EnableMongoRoleBasedAccessControl, EnablePartialUniqueIndex,
+                            EnableServerless, EnableTable, EnableTtlOnCustomPath,
                             EnableUniqueCompoundNestedDocs, MongoDBv3.4 and mongoEnableDocLevelTTL.
                           type: string
                       type: object
@@ -678,7 +682,8 @@ spec:
                           type: array
                         maxAgeInSeconds:
                           description: The number of seconds the client should cache
-                            a preflight response.
+                            a preflight response. Possible values are between 1 and
+                            2147483647.
                           type: number
                       type: object
                     type: array
@@ -690,6 +695,7 @@ spec:
                   defaultIdentityType:
                     description: The default identity for accessing Key Vault. Possible
                       values are FirstPartyIdentity, SystemAssignedIdentity or UserAssignedIdentity.
+                      Defaults to FirstPartyIdentity.
                     type: string
                   enableAutomaticFailover:
                     description: Enable automatic failover for this Cosmos DB account.
@@ -1127,7 +1133,8 @@ spec:
                             are AllowSelfServeUpgradeToMongo36, DisableRateLimitingResponses,
                             EnableAggregationPipeline, EnableCassandra, EnableGremlin,
                             EnableMongo, EnableMongo16MBDocumentSupport, EnableMongoRetryableWrites,
-                            EnableMongoRoleBasedAccessControl, EnableServerless, EnableTable,
+                            EnableMongoRoleBasedAccessControl, EnablePartialUniqueIndex,
+                            EnableServerless, EnableTable, EnableTtlOnCustomPath,
                             EnableUniqueCompoundNestedDocs, MongoDBv3.4 and mongoEnableDocLevelTTL.
                           type: string
                       type: object
@@ -1200,7 +1207,8 @@ spec:
                           type: array
                         maxAgeInSeconds:
                           description: The number of seconds the client should cache
-                            a preflight response.
+                            a preflight response. Possible values are between 1 and
+                            2147483647.
                           type: number
                       type: object
                     type: array
@@ -1212,6 +1220,7 @@ spec:
                   defaultIdentityType:
                     description: The default identity for accessing Key Vault. Possible
                       values are FirstPartyIdentity, SystemAssignedIdentity or UserAssignedIdentity.
+                      Defaults to FirstPartyIdentity.
                     type: string
                   enableAutomaticFailover:
                     description: Enable automatic failover for this Cosmos DB account.

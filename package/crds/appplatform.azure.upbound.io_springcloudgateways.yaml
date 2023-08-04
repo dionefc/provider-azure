@@ -101,6 +101,22 @@ spec:
                     items:
                       type: string
                     type: array
+                  clientAuthorization:
+                    description: A client_authorization block as defined below.
+                    items:
+                      properties:
+                        certificateIds:
+                          description: Specifies the Spring Cloud Certificate IDs
+                            of the Spring Cloud Gateway.
+                          items:
+                            type: string
+                          type: array
+                        verificationEnabled:
+                          description: Specifies whether the client certificate verification
+                            is enabled.
+                          type: boolean
+                      type: object
+                    type: array
                   cors:
                     description: A cors block as defined below.
                     items:
@@ -116,6 +132,12 @@ spec:
                             The special value * allows all methods. If not set, GET
                             and HEAD are allowed by default. Possible values are DELETE,
                             GET, HEAD, MERGE, POST, OPTIONS and PUT.
+                          items:
+                            type: string
+                          type: array
+                        allowedOriginPatterns:
+                          description: Allowed origin patterns to make cross-site
+                            requests.
                           items:
                             type: string
                           type: array
@@ -341,6 +363,22 @@ spec:
                     items:
                       type: string
                     type: array
+                  clientAuthorization:
+                    description: A client_authorization block as defined below.
+                    items:
+                      properties:
+                        certificateIds:
+                          description: Specifies the Spring Cloud Certificate IDs
+                            of the Spring Cloud Gateway.
+                          items:
+                            type: string
+                          type: array
+                        verificationEnabled:
+                          description: Specifies whether the client certificate verification
+                            is enabled.
+                          type: boolean
+                      type: object
+                    type: array
                   cors:
                     description: A cors block as defined below.
                     items:
@@ -356,6 +394,12 @@ spec:
                             The special value * allows all methods. If not set, GET
                             and HEAD are allowed by default. Possible values are DELETE,
                             GET, HEAD, MERGE, POST, OPTIONS and PUT.
+                          items:
+                            type: string
+                          type: array
+                        allowedOriginPatterns:
+                          description: Allowed origin patterns to make cross-site
+                            requests.
                           items:
                             type: string
                           type: array
@@ -676,6 +720,22 @@ spec:
                     items:
                       type: string
                     type: array
+                  clientAuthorization:
+                    description: A client_authorization block as defined below.
+                    items:
+                      properties:
+                        certificateIds:
+                          description: Specifies the Spring Cloud Certificate IDs
+                            of the Spring Cloud Gateway.
+                          items:
+                            type: string
+                          type: array
+                        verificationEnabled:
+                          description: Specifies whether the client certificate verification
+                            is enabled.
+                          type: boolean
+                      type: object
+                    type: array
                   cors:
                     description: A cors block as defined below.
                     items:
@@ -691,6 +751,12 @@ spec:
                             The special value * allows all methods. If not set, GET
                             and HEAD are allowed by default. Possible values are DELETE,
                             GET, HEAD, MERGE, POST, OPTIONS and PUT.
+                          items:
+                            type: string
+                          type: array
+                        allowedOriginPatterns:
+                          description: Allowed origin patterns to make cross-site
+                            requests.
                           items:
                             type: string
                           type: array

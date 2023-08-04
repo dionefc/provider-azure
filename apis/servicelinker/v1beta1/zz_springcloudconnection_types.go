@@ -137,7 +137,7 @@ type SpringCloudConnectionObservation struct {
 	// The ID of the data source spring cloud. Changing this forces a new resource to be created.
 	SpringCloudID *string `json:"springCloudId,omitempty" tf:"spring_cloud_id,omitempty"`
 
-	// The ID of the target resource. Changing this forces a new resource to be created. Possible values are Postgres, PostgresFlexible, Mysql, Sql, Redis, RedisEnterprise, CosmosCassandra, CosmosGremlin, CosmosMongo, CosmosSql, CosmosTable, StorageBlob, StorageQueue, StorageFile, StorageTable, AppConfig, EventHub, ServiceBus, SignalR, WebPubSub, ConfluentKafka.
+	// The ID of the target resource. Changing this forces a new resource to be created. Possible target resources are Postgres, PostgresFlexible, Mysql, Sql, Redis, RedisEnterprise, CosmosCassandra, CosmosGremlin, CosmosMongo, CosmosSql, CosmosTable, StorageBlob, StorageQueue, StorageFile, StorageTable, AppConfig, EventHub, ServiceBus, SignalR, WebPubSub, ConfluentKafka. The integration guide can be found here.
 	TargetResourceID *string `json:"targetResourceId,omitempty" tf:"target_resource_id,omitempty"`
 
 	// The type of the VNet solution. Possible values are serviceEndpoint, privateLink.
@@ -176,7 +176,7 @@ type SpringCloudConnectionParameters struct {
 	// +kubebuilder:validation:Optional
 	SpringCloudIDSelector *v1.Selector `json:"springCloudIdSelector,omitempty" tf:"-"`
 
-	// The ID of the target resource. Changing this forces a new resource to be created. Possible values are Postgres, PostgresFlexible, Mysql, Sql, Redis, RedisEnterprise, CosmosCassandra, CosmosGremlin, CosmosMongo, CosmosSql, CosmosTable, StorageBlob, StorageQueue, StorageFile, StorageTable, AppConfig, EventHub, ServiceBus, SignalR, WebPubSub, ConfluentKafka.
+	// The ID of the target resource. Changing this forces a new resource to be created. Possible target resources are Postgres, PostgresFlexible, Mysql, Sql, Redis, RedisEnterprise, CosmosCassandra, CosmosGremlin, CosmosMongo, CosmosSql, CosmosTable, StorageBlob, StorageQueue, StorageFile, StorageTable, AppConfig, EventHub, ServiceBus, SignalR, WebPubSub, ConfluentKafka. The integration guide can be found here.
 	// +crossplane:generate:reference:type=github.com/upbound/provider-azure/apis/cosmosdb/v1beta1.SQLDatabase
 	// +crossplane:generate:reference:extractor=github.com/upbound/upjet/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional

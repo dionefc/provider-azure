@@ -122,11 +122,17 @@ type RepositoryParameters struct {
 
 type SpringCloudConfigurationServiceInitParameters struct {
 
+	// The generation of the Spring Cloud Configuration Service. Possible values are Gen1 and Gen2.
+	Generation *string `json:"generation,omitempty" tf:"generation,omitempty"`
+
 	// One or more repository blocks as defined below.
 	Repository []RepositoryInitParameters `json:"repository,omitempty" tf:"repository,omitempty"`
 }
 
 type SpringCloudConfigurationServiceObservation struct {
+
+	// The generation of the Spring Cloud Configuration Service. Possible values are Gen1 and Gen2.
+	Generation *string `json:"generation,omitempty" tf:"generation,omitempty"`
 
 	// The ID of the Spring Cloud Configuration Service.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -139,6 +145,10 @@ type SpringCloudConfigurationServiceObservation struct {
 }
 
 type SpringCloudConfigurationServiceParameters struct {
+
+	// The generation of the Spring Cloud Configuration Service. Possible values are Gen1 and Gen2.
+	// +kubebuilder:validation:Optional
+	Generation *string `json:"generation,omitempty" tf:"generation,omitempty"`
 
 	// One or more repository blocks as defined below.
 	// +kubebuilder:validation:Optional

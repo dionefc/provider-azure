@@ -87,7 +87,7 @@ type KubernetesClusterNodePoolInitParameters struct {
 	// The type of disk which should be used for the Operating System. Possible values are Ephemeral and Managed. Defaults to Managed. Changing this forces a new resource to be created.
 	OsDiskType *string `json:"osDiskType,omitempty" tf:"os_disk_type,omitempty"`
 
-	// Specifies the OS SKU used by the agent pool. Possible values include: Ubuntu, CBLMariner, Mariner, Windows2019, Windows2022. If not specified, the default is Ubuntu if OSType=Linux or Windows2019 if OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is deprecated. Changing this forces a new resource to be created.
+	// Specifies the OS SKU used by the agent pool. Possible values include: AzureLinux, Ubuntu, Windows2019, Windows2022. If not specified, the default is Ubuntu if OSType=Linux or Windows2019 if OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is deprecated. Changing this forces a new resource to be created.
 	OsSku *string `json:"osSku,omitempty" tf:"os_sku,omitempty"`
 
 	// The Operating System which should be used for this Node Pool. Changing this forces a new resource to be created. Possible values are Linux and Windows. Defaults to Linux.
@@ -387,7 +387,7 @@ type KubernetesClusterNodePoolObservation struct {
 	// The type of disk which should be used for the Operating System. Possible values are Ephemeral and Managed. Defaults to Managed. Changing this forces a new resource to be created.
 	OsDiskType *string `json:"osDiskType,omitempty" tf:"os_disk_type,omitempty"`
 
-	// Specifies the OS SKU used by the agent pool. Possible values include: Ubuntu, CBLMariner, Mariner, Windows2019, Windows2022. If not specified, the default is Ubuntu if OSType=Linux or Windows2019 if OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is deprecated. Changing this forces a new resource to be created.
+	// Specifies the OS SKU used by the agent pool. Possible values include: AzureLinux, Ubuntu, Windows2019, Windows2022. If not specified, the default is Ubuntu if OSType=Linux or Windows2019 if OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is deprecated. Changing this forces a new resource to be created.
 	OsSku *string `json:"osSku,omitempty" tf:"os_sku,omitempty"`
 
 	// The Operating System which should be used for this Node Pool. Changing this forces a new resource to be created. Possible values are Linux and Windows. Defaults to Linux.
@@ -548,7 +548,7 @@ type KubernetesClusterNodePoolParameters struct {
 	// +kubebuilder:validation:Optional
 	OsDiskType *string `json:"osDiskType,omitempty" tf:"os_disk_type,omitempty"`
 
-	// Specifies the OS SKU used by the agent pool. Possible values include: Ubuntu, CBLMariner, Mariner, Windows2019, Windows2022. If not specified, the default is Ubuntu if OSType=Linux or Windows2019 if OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is deprecated. Changing this forces a new resource to be created.
+	// Specifies the OS SKU used by the agent pool. Possible values include: AzureLinux, Ubuntu, Windows2019, Windows2022. If not specified, the default is Ubuntu if OSType=Linux or Windows2019 if OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is deprecated. Changing this forces a new resource to be created.
 	// +kubebuilder:validation:Optional
 	OsSku *string `json:"osSku,omitempty" tf:"os_sku,omitempty"`
 

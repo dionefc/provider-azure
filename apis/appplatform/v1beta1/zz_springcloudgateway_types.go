@@ -72,6 +72,35 @@ type APIMetadataParameters struct {
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
+type ClientAuthorizationInitParameters struct {
+
+	// Specifies the Spring Cloud Certificate IDs of the Spring Cloud Gateway.
+	CertificateIds []*string `json:"certificateIds,omitempty" tf:"certificate_ids,omitempty"`
+
+	// Specifies whether the client certificate verification is enabled.
+	VerificationEnabled *bool `json:"verificationEnabled,omitempty" tf:"verification_enabled,omitempty"`
+}
+
+type ClientAuthorizationObservation struct {
+
+	// Specifies the Spring Cloud Certificate IDs of the Spring Cloud Gateway.
+	CertificateIds []*string `json:"certificateIds,omitempty" tf:"certificate_ids,omitempty"`
+
+	// Specifies whether the client certificate verification is enabled.
+	VerificationEnabled *bool `json:"verificationEnabled,omitempty" tf:"verification_enabled,omitempty"`
+}
+
+type ClientAuthorizationParameters struct {
+
+	// Specifies the Spring Cloud Certificate IDs of the Spring Cloud Gateway.
+	// +kubebuilder:validation:Optional
+	CertificateIds []*string `json:"certificateIds,omitempty" tf:"certificate_ids,omitempty"`
+
+	// Specifies whether the client certificate verification is enabled.
+	// +kubebuilder:validation:Optional
+	VerificationEnabled *bool `json:"verificationEnabled,omitempty" tf:"verification_enabled,omitempty"`
+}
+
 type CorsInitParameters struct {
 
 	// Allowed headers in cross-site requests. The special value * allows actual requests to send any header.
@@ -79,6 +108,9 @@ type CorsInitParameters struct {
 
 	// Allowed HTTP methods on cross-site requests. The special value * allows all methods. If not set, GET and HEAD are allowed by default. Possible values are DELETE, GET, HEAD, MERGE, POST, OPTIONS and PUT.
 	AllowedMethods []*string `json:"allowedMethods,omitempty" tf:"allowed_methods,omitempty"`
+
+	// Allowed origin patterns to make cross-site requests.
+	AllowedOriginPatterns []*string `json:"allowedOriginPatterns,omitempty" tf:"allowed_origin_patterns,omitempty"`
 
 	// Allowed origins to make cross-site requests. The special value * allows all domains.
 	AllowedOrigins []*string `json:"allowedOrigins,omitempty" tf:"allowed_origins,omitempty"`
@@ -100,6 +132,9 @@ type CorsObservation struct {
 
 	// Allowed HTTP methods on cross-site requests. The special value * allows all methods. If not set, GET and HEAD are allowed by default. Possible values are DELETE, GET, HEAD, MERGE, POST, OPTIONS and PUT.
 	AllowedMethods []*string `json:"allowedMethods,omitempty" tf:"allowed_methods,omitempty"`
+
+	// Allowed origin patterns to make cross-site requests.
+	AllowedOriginPatterns []*string `json:"allowedOriginPatterns,omitempty" tf:"allowed_origin_patterns,omitempty"`
 
 	// Allowed origins to make cross-site requests. The special value * allows all domains.
 	AllowedOrigins []*string `json:"allowedOrigins,omitempty" tf:"allowed_origins,omitempty"`
@@ -123,6 +158,10 @@ type CorsParameters struct {
 	// Allowed HTTP methods on cross-site requests. The special value * allows all methods. If not set, GET and HEAD are allowed by default. Possible values are DELETE, GET, HEAD, MERGE, POST, OPTIONS and PUT.
 	// +kubebuilder:validation:Optional
 	AllowedMethods []*string `json:"allowedMethods,omitempty" tf:"allowed_methods,omitempty"`
+
+	// Allowed origin patterns to make cross-site requests.
+	// +kubebuilder:validation:Optional
+	AllowedOriginPatterns []*string `json:"allowedOriginPatterns,omitempty" tf:"allowed_origin_patterns,omitempty"`
 
 	// Allowed origins to make cross-site requests. The special value * allows all domains.
 	// +kubebuilder:validation:Optional
@@ -148,6 +187,9 @@ type SpringCloudGatewayInitParameters struct {
 
 	// Specifies a list of application performance monitoring types used in the Spring Cloud Gateway. The allowed values are AppDynamics, ApplicationInsights, Dynatrace, ElasticAPM and NewRelic.
 	ApplicationPerformanceMonitoringTypes []*string `json:"applicationPerformanceMonitoringTypes,omitempty" tf:"application_performance_monitoring_types,omitempty"`
+
+	// A client_authorization block as defined below.
+	ClientAuthorization []ClientAuthorizationInitParameters `json:"clientAuthorization,omitempty" tf:"client_authorization,omitempty"`
 
 	// A cors block as defined below.
 	Cors []CorsInitParameters `json:"cors,omitempty" tf:"cors,omitempty"`
@@ -178,6 +220,9 @@ type SpringCloudGatewayObservation struct {
 
 	// Specifies a list of application performance monitoring types used in the Spring Cloud Gateway. The allowed values are AppDynamics, ApplicationInsights, Dynatrace, ElasticAPM and NewRelic.
 	ApplicationPerformanceMonitoringTypes []*string `json:"applicationPerformanceMonitoringTypes,omitempty" tf:"application_performance_monitoring_types,omitempty"`
+
+	// A client_authorization block as defined below.
+	ClientAuthorization []ClientAuthorizationObservation `json:"clientAuthorization,omitempty" tf:"client_authorization,omitempty"`
 
 	// A cors block as defined below.
 	Cors []CorsObservation `json:"cors,omitempty" tf:"cors,omitempty"`
@@ -219,6 +264,10 @@ type SpringCloudGatewayParameters struct {
 	// Specifies a list of application performance monitoring types used in the Spring Cloud Gateway. The allowed values are AppDynamics, ApplicationInsights, Dynatrace, ElasticAPM and NewRelic.
 	// +kubebuilder:validation:Optional
 	ApplicationPerformanceMonitoringTypes []*string `json:"applicationPerformanceMonitoringTypes,omitempty" tf:"application_performance_monitoring_types,omitempty"`
+
+	// A client_authorization block as defined below.
+	// +kubebuilder:validation:Optional
+	ClientAuthorization []ClientAuthorizationParameters `json:"clientAuthorization,omitempty" tf:"client_authorization,omitempty"`
 
 	// A cors block as defined below.
 	// +kubebuilder:validation:Optional

@@ -1019,8 +1019,8 @@ type WindowsFunctionAppAuthSettingsV2InitParameters struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []WindowsFunctionAppAuthSettingsV2CustomOidcV2InitParameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -1313,8 +1313,8 @@ type WindowsFunctionAppAuthSettingsV2Observation struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []WindowsFunctionAppAuthSettingsV2CustomOidcV2Observation `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -1400,8 +1400,8 @@ type WindowsFunctionAppAuthSettingsV2Parameters struct {
 	// +kubebuilder:validation:Optional
 	CustomOidcV2 []WindowsFunctionAppAuthSettingsV2CustomOidcV2Parameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	// +kubebuilder:validation:Optional
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
@@ -1776,6 +1776,9 @@ type WindowsFunctionAppInitParameters struct {
 	// The Azure Region where the Windows Function App should exist. Changing this forces a new Windows Function App to be created.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
+	// Should public network access be enabled for the Function App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
+
 	// A site_config block as defined below.
 	SiteConfig []WindowsFunctionAppSiteConfigInitParameters `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
 
@@ -1888,6 +1891,9 @@ type WindowsFunctionAppObservation struct {
 
 	// A comma separated list of possible outbound IP addresses as a string. For example 52.23.25.3,52.143.43.12,52.143.43.17. This is a superset of outbound_ip_addresses.
 	PossibleOutboundIPAddresses *string `json:"possibleOutboundIpAddresses,omitempty" tf:"possible_outbound_ip_addresses,omitempty"`
+
+	// Should public network access be enabled for the Function App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
 
 	// The name of the Resource Group where the Windows Function App should exist. Changing this forces a new Windows Function App to be created.
 	ResourceGroupName *string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
@@ -2008,6 +2014,10 @@ type WindowsFunctionAppParameters struct {
 	// The Azure Region where the Windows Function App should exist. Changing this forces a new Windows Function App to be created.
 	// +kubebuilder:validation:Optional
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// Should public network access be enabled for the Function App. Defaults to true.
+	// +kubebuilder:validation:Optional
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
 
 	// The name of the Resource Group where the Windows Function App should exist. Changing this forces a new Windows Function App to be created.
 	// +crossplane:generate:reference:type=github.com/upbound/provider-azure/apis/azure/v1beta1.ResourceGroup

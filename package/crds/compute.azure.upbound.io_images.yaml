@@ -118,6 +118,10 @@ spec:
                           description: Specifies the caching mode as ReadWrite, ReadOnly,
                             or None. The default is None.
                           type: string
+                        diskEncryptionSetId:
+                          description: The ID of the Disk Encryption Set which should
+                            be used to encrypt this image.
+                          type: string
                         managedDiskId:
                           description: Specifies the ID of the managed disk resource
                             that you want to use to create the image.
@@ -134,7 +138,7 @@ spec:
                           type: string
                         sizeGb:
                           description: Specifies the size of the image to be created.
-                            The target size can't be smaller than the source size.
+                            Changing this forces a new resource to be created.
                           type: number
                       type: object
                     type: array
@@ -295,6 +299,10 @@ spec:
                           description: Specifies the caching mode as ReadWrite, ReadOnly,
                             or None. The default is None.
                           type: string
+                        diskEncryptionSetId:
+                          description: The ID of the Disk Encryption Set which should
+                            be used to encrypt this image.
+                          type: string
                         managedDiskId:
                           description: Specifies the ID of the managed disk resource
                             that you want to use to create the image.
@@ -311,7 +319,7 @@ spec:
                           type: string
                         sizeGb:
                           description: Specifies the size of the image to be created.
-                            The target size can't be smaller than the source size.
+                            Changing this forces a new resource to be created.
                           type: number
                       type: object
                     type: array
@@ -589,6 +597,10 @@ spec:
                           description: Specifies the caching mode as ReadWrite, ReadOnly,
                             or None. The default is None.
                           type: string
+                        diskEncryptionSetId:
+                          description: The ID of the Disk Encryption Set which should
+                            be used to encrypt this image.
+                          type: string
                         managedDiskId:
                           description: Specifies the ID of the managed disk resource
                             that you want to use to create the image.
@@ -605,7 +617,7 @@ spec:
                           type: string
                         sizeGb:
                           description: Specifies the size of the image to be created.
-                            The target size can't be smaller than the source size.
+                            Changing this forces a new resource to be created.
                           type: number
                       type: object
                     type: array

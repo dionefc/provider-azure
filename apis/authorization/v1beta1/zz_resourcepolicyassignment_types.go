@@ -100,7 +100,7 @@ type ResourcePolicyAssignmentInitParameters struct {
 	// A JSON mapping of any Metadata for this Policy.
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
-	// The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created.
+	// The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created. Cannot exceed 64 characters in length.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// One or more non_compliance_message blocks as defined below.
@@ -174,7 +174,7 @@ type ResourcePolicyAssignmentObservation struct {
 	// A JSON mapping of any Metadata for this Policy.
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
-	// The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created.
+	// The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created. Cannot exceed 64 characters in length.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// One or more non_compliance_message blocks as defined below.
@@ -254,7 +254,7 @@ type ResourcePolicyAssignmentParameters struct {
 	// +kubebuilder:validation:Optional
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
-	// The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created.
+	// The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created. Cannot exceed 64 characters in length.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 

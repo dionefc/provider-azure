@@ -30,13 +30,12 @@ type ClusterInitParameters struct {
 	// Is the cluster's double encryption enabled? Changing this forces a new resource to be created.
 	DoubleEncryptionEnabled *bool `json:"doubleEncryptionEnabled,omitempty" tf:"double_encryption_enabled,omitempty"`
 
-	// . The engine type that will be used in the backend. Possible values are V2 and V3. Defaults to V2. Changing this forces a new Kusto Cluster to be created.
 	Engine *string `json:"engine,omitempty" tf:"engine,omitempty"`
 
 	// An identity block as defined below.
 	Identity []IdentityInitParameters `json:"identity,omitempty" tf:"identity,omitempty"`
 
-	// An list of language_extensions to enable. Valid values are: PYTHON and R.
+	// An list of language_extensions to enable. Valid values are: PYTHON, PYTHON_3.10.8 and R. PYTHON is used to specify Python 3.6.5 image and PYTHON_3.10.8 is used to specify Python 3.10.8 image. Note that PYTHON_3.10.8 is only available in skus which support nested virtualization.
 	LanguageExtensions []*string `json:"languageExtensions,omitempty" tf:"language_extensions,omitempty"`
 
 	// The location where the Kusto Cluster should be created. Changing this forces a new resource to be created.
@@ -96,7 +95,6 @@ type ClusterObservation struct {
 	// Is the cluster's double encryption enabled? Changing this forces a new resource to be created.
 	DoubleEncryptionEnabled *bool `json:"doubleEncryptionEnabled,omitempty" tf:"double_encryption_enabled,omitempty"`
 
-	// . The engine type that will be used in the backend. Possible values are V2 and V3. Defaults to V2. Changing this forces a new Kusto Cluster to be created.
 	Engine *string `json:"engine,omitempty" tf:"engine,omitempty"`
 
 	// The Kusto Cluster ID.
@@ -105,7 +103,7 @@ type ClusterObservation struct {
 	// An identity block as defined below.
 	Identity []IdentityObservation `json:"identity,omitempty" tf:"identity,omitempty"`
 
-	// An list of language_extensions to enable. Valid values are: PYTHON and R.
+	// An list of language_extensions to enable. Valid values are: PYTHON, PYTHON_3.10.8 and R. PYTHON is used to specify Python 3.6.5 image and PYTHON_3.10.8 is used to specify Python 3.10.8 image. Note that PYTHON_3.10.8 is only available in skus which support nested virtualization.
 	LanguageExtensions []*string `json:"languageExtensions,omitempty" tf:"language_extensions,omitempty"`
 
 	// The location where the Kusto Cluster should be created. Changing this forces a new resource to be created.
@@ -173,7 +171,6 @@ type ClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	DoubleEncryptionEnabled *bool `json:"doubleEncryptionEnabled,omitempty" tf:"double_encryption_enabled,omitempty"`
 
-	// . The engine type that will be used in the backend. Possible values are V2 and V3. Defaults to V2. Changing this forces a new Kusto Cluster to be created.
 	// +kubebuilder:validation:Optional
 	Engine *string `json:"engine,omitempty" tf:"engine,omitempty"`
 
@@ -181,7 +178,7 @@ type ClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	Identity []IdentityParameters `json:"identity,omitempty" tf:"identity,omitempty"`
 
-	// An list of language_extensions to enable. Valid values are: PYTHON and R.
+	// An list of language_extensions to enable. Valid values are: PYTHON, PYTHON_3.10.8 and R. PYTHON is used to specify Python 3.6.5 image and PYTHON_3.10.8 is used to specify Python 3.10.8 image. Note that PYTHON_3.10.8 is only available in skus which support nested virtualization.
 	// +kubebuilder:validation:Optional
 	LanguageExtensions []*string `json:"languageExtensions,omitempty" tf:"language_extensions,omitempty"`
 

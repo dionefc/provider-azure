@@ -126,6 +126,22 @@ spec:
 ---
 
 apiVersion: cdn.azure.upbound.io/v1beta1
+kind: FrontdoorEndpoint
+metadata:
+  annotations:
+    meta.upbound.io/example-id: cdn/v1beta1/frontdoorroute
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+spec:
+  forProvider:
+    cdnFrontdoorProfileIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+
+---
+
+apiVersion: cdn.azure.upbound.io/v1beta1
 kind: FrontdoorOrigin
 metadata:
   annotations:

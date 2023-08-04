@@ -637,18 +637,11 @@ spec:
                                 items:
                                   properties:
                                     capacity:
-                                      description: A capacity block as defined below.
                                       items:
                                         properties:
                                           maxInstanceCount:
-                                            description: The maximum number of worker
-                                              nodes to autoscale to based on the cluster's
-                                              activity.
                                             type: number
                                           minInstanceCount:
-                                            description: The minimum number of worker
-                                              nodes to autoscale to based on the cluster's
-                                              activity.
                                             type: number
                                         type: object
                                       type: array
@@ -1541,18 +1534,11 @@ spec:
                                 items:
                                   properties:
                                     capacity:
-                                      description: A capacity block as defined below.
                                       items:
                                         properties:
                                           maxInstanceCount:
-                                            description: The maximum number of worker
-                                              nodes to autoscale to based on the cluster's
-                                              activity.
                                             type: number
                                           minInstanceCount:
-                                            description: The minimum number of worker
-                                              nodes to autoscale to based on the cluster's
-                                              activity.
                                             type: number
                                         type: object
                                       type: array
@@ -2345,18 +2331,11 @@ spec:
                                 items:
                                   properties:
                                     capacity:
-                                      description: A capacity block as defined below.
                                       items:
                                         properties:
                                           maxInstanceCount:
-                                            description: The maximum number of worker
-                                              nodes to autoscale to based on the cluster's
-                                              activity.
                                             type: number
                                           minInstanceCount:
-                                            description: The minimum number of worker
-                                              nodes to autoscale to based on the cluster's
-                                              activity.
                                             type: number
                                         type: object
                                       type: array

@@ -71,6 +71,10 @@ spec:
                     description: The content of uploaded certificate. Changing this
                       forces a new resource to be created.
                     type: string
+                  excludePrivateKey:
+                    description: Specifies whether the private key should be excluded
+                      from the Key Vault Certificate. Defaults to false.
+                    type: boolean
                   keyVaultCertificateId:
                     description: Specifies the ID of the Key Vault Certificate resource.
                       Changing this forces a new resource to be created.
@@ -327,6 +331,10 @@ spec:
                     description: The content of uploaded certificate. Changing this
                       forces a new resource to be created.
                     type: string
+                  excludePrivateKey:
+                    description: Specifies whether the private key should be excluded
+                      from the Key Vault Certificate. Defaults to false.
+                    type: boolean
                 type: object
               managementPolicies:
                 default:
@@ -535,6 +543,10 @@ spec:
                     description: The content of uploaded certificate. Changing this
                       forces a new resource to be created.
                     type: string
+                  excludePrivateKey:
+                    description: Specifies whether the private key should be excluded
+                      from the Key Vault Certificate. Defaults to false.
+                    type: boolean
                   id:
                     description: The ID of the Spring Cloud Certificate.
                     type: string

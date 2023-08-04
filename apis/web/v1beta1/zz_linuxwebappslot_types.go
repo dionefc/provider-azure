@@ -1155,8 +1155,8 @@ type LinuxWebAppSlotAuthSettingsV2InitParameters struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []LinuxWebAppSlotAuthSettingsV2CustomOidcV2InitParameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -1449,8 +1449,8 @@ type LinuxWebAppSlotAuthSettingsV2Observation struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []LinuxWebAppSlotAuthSettingsV2CustomOidcV2Observation `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -1536,8 +1536,8 @@ type LinuxWebAppSlotAuthSettingsV2Parameters struct {
 	// +kubebuilder:validation:Optional
 	CustomOidcV2 []LinuxWebAppSlotAuthSettingsV2CustomOidcV2Parameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	// +kubebuilder:validation:Optional
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
@@ -1896,6 +1896,9 @@ type LinuxWebAppSlotInitParameters struct {
 	// The name which should be used for this Linux Web App Slot. Changing this forces a new Linux Web App Slot to be created.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// Should public network access be enabled for the Web App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
+
 	// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Linux Web App will be used.
 	ServicePlanID *string `json:"servicePlanId,omitempty" tf:"service_plan_id,omitempty"`
 
@@ -2040,6 +2043,9 @@ type LinuxWebAppSlotObservation struct {
 	// A comma-separated list of outbound IP addresses - such as 52.23.25.3,52.143.43.12,52.143.43.17 - not all of which are necessarily in use. Superset of outbound_ip_addresses.
 	PossibleOutboundIPAddresses *string `json:"possibleOutboundIpAddresses,omitempty" tf:"possible_outbound_ip_addresses,omitempty"`
 
+	// Should public network access be enabled for the Web App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
+
 	// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Linux Web App will be used.
 	ServicePlanID *string `json:"servicePlanId,omitempty" tf:"service_plan_id,omitempty"`
 
@@ -2137,6 +2143,10 @@ type LinuxWebAppSlotParameters struct {
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// Should public network access be enabled for the Web App. Defaults to true.
+	// +kubebuilder:validation:Optional
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
+
 	// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Linux Web App will be used.
 	// +kubebuilder:validation:Optional
 	ServicePlanID *string `json:"servicePlanId,omitempty" tf:"service_plan_id,omitempty"`
@@ -2174,12 +2184,18 @@ type LinuxWebAppSlotParameters struct {
 }
 
 type LinuxWebAppSlotSiteConfigApplicationStackInitParameters struct {
-
-	// The Docker image reference, including repository host as needed.
 	DockerImage *string `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
-	// The image Tag to use. e.g. latest.
+	// The docker image, including tag, to be used. e.g. appsvc/staticsite:latest.
+	DockerImageName *string `json:"dockerImageName,omitempty" tf:"docker_image_name,omitempty"`
+
 	DockerImageTag *string `json:"dockerImageTag,omitempty" tf:"docker_image_tag,omitempty"`
+
+	// The URL of the container registry where the docker_image_name is located. e.g. https://index.docker.io or https://mcr.microsoft.com. This value is required with docker_image_name.
+	DockerRegistryURL *string `json:"dockerRegistryUrl,omitempty" tf:"docker_registry_url,omitempty"`
+
+	// The User Name to use for authentication against the registry to pull the image.
+	DockerRegistryUsername *string `json:"dockerRegistryUsername,omitempty" tf:"docker_registry_username,omitempty"`
 
 	// The version of .NET to use. Possible values include 3.1, 5.0, 6.0 and 7.0.
 	DotnetVersion *string `json:"dotnetVersion,omitempty" tf:"dotnet_version,omitempty"`
@@ -2210,12 +2226,18 @@ type LinuxWebAppSlotSiteConfigApplicationStackInitParameters struct {
 }
 
 type LinuxWebAppSlotSiteConfigApplicationStackObservation struct {
-
-	// The Docker image reference, including repository host as needed.
 	DockerImage *string `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
-	// The image Tag to use. e.g. latest.
+	// The docker image, including tag, to be used. e.g. appsvc/staticsite:latest.
+	DockerImageName *string `json:"dockerImageName,omitempty" tf:"docker_image_name,omitempty"`
+
 	DockerImageTag *string `json:"dockerImageTag,omitempty" tf:"docker_image_tag,omitempty"`
+
+	// The URL of the container registry where the docker_image_name is located. e.g. https://index.docker.io or https://mcr.microsoft.com. This value is required with docker_image_name.
+	DockerRegistryURL *string `json:"dockerRegistryUrl,omitempty" tf:"docker_registry_url,omitempty"`
+
+	// The User Name to use for authentication against the registry to pull the image.
+	DockerRegistryUsername *string `json:"dockerRegistryUsername,omitempty" tf:"docker_registry_username,omitempty"`
 
 	// The version of .NET to use. Possible values include 3.1, 5.0, 6.0 and 7.0.
 	DotnetVersion *string `json:"dotnetVersion,omitempty" tf:"dotnet_version,omitempty"`
@@ -2247,13 +2269,27 @@ type LinuxWebAppSlotSiteConfigApplicationStackObservation struct {
 
 type LinuxWebAppSlotSiteConfigApplicationStackParameters struct {
 
-	// The Docker image reference, including repository host as needed.
 	// +kubebuilder:validation:Optional
 	DockerImage *string `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
-	// The image Tag to use. e.g. latest.
+	// The docker image, including tag, to be used. e.g. appsvc/staticsite:latest.
+	// +kubebuilder:validation:Optional
+	DockerImageName *string `json:"dockerImageName,omitempty" tf:"docker_image_name,omitempty"`
+
 	// +kubebuilder:validation:Optional
 	DockerImageTag *string `json:"dockerImageTag,omitempty" tf:"docker_image_tag,omitempty"`
+
+	// The User Name to use for authentication against the registry to pull the image.
+	// +kubebuilder:validation:Optional
+	DockerRegistryPasswordSecretRef *v1.SecretKeySelector `json:"dockerRegistryPasswordSecretRef,omitempty" tf:"-"`
+
+	// The URL of the container registry where the docker_image_name is located. e.g. https://index.docker.io or https://mcr.microsoft.com. This value is required with docker_image_name.
+	// +kubebuilder:validation:Optional
+	DockerRegistryURL *string `json:"dockerRegistryUrl,omitempty" tf:"docker_registry_url,omitempty"`
+
+	// The User Name to use for authentication against the registry to pull the image.
+	// +kubebuilder:validation:Optional
+	DockerRegistryUsername *string `json:"dockerRegistryUsername,omitempty" tf:"docker_registry_username,omitempty"`
 
 	// The version of .NET to use. Possible values include 3.1, 5.0, 6.0 and 7.0.
 	// +kubebuilder:validation:Optional
@@ -3237,7 +3273,7 @@ type TriggerStatusCodeInitParameters struct {
 	SubStatus *float64 `json:"subStatus,omitempty" tf:"sub_status,omitempty"`
 
 	// The Win32 Status Code of the Request.
-	Win32Status *string `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
+	Win32Status *float64 `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
 }
 
 type TriggerStatusCodeObservation struct {
@@ -3258,7 +3294,7 @@ type TriggerStatusCodeObservation struct {
 	SubStatus *float64 `json:"subStatus,omitempty" tf:"sub_status,omitempty"`
 
 	// The Win32 Status Code of the Request.
-	Win32Status *string `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
+	Win32Status *float64 `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
 }
 
 type TriggerStatusCodeParameters struct {
@@ -3285,7 +3321,7 @@ type TriggerStatusCodeParameters struct {
 
 	// The Win32 Status Code of the Request.
 	// +kubebuilder:validation:Optional
-	Win32Status *string `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
+	Win32Status *float64 `json:"win32Status,omitempty" tf:"win32_status,omitempty"`
 }
 
 // LinuxWebAppSlotSpec defines the desired state of LinuxWebAppSlot

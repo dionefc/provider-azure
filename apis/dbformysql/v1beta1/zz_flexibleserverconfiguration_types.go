@@ -15,7 +15,7 @@ import (
 
 type FlexibleServerConfigurationInitParameters struct {
 
-	// Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values. Changing this forces a new resource to be created.
+	// Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
@@ -30,7 +30,7 @@ type FlexibleServerConfigurationObservation struct {
 	// Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
 	ServerName *string `json:"serverName,omitempty" tf:"server_name,omitempty"`
 
-	// Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values. Changing this forces a new resource to be created.
+	// Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
@@ -62,7 +62,7 @@ type FlexibleServerConfigurationParameters struct {
 	// +kubebuilder:validation:Optional
 	ServerNameSelector *v1.Selector `json:"serverNameSelector,omitempty" tf:"-"`
 
-	// Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values. Changing this forces a new resource to be created.
+	// Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values.
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }

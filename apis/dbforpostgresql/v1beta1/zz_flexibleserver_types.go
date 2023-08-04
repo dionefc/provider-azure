@@ -54,6 +54,12 @@ type AuthenticationParameters struct {
 
 type CustomerManagedKeyInitParameters struct {
 
+	// The ID of the geo backup Key Vault Key. It can't cross region and need Customer Managed Key in same region as geo backup.
+	GeoBackupKeyVaultKeyID *string `json:"geoBackupKeyVaultKeyId,omitempty" tf:"geo_backup_key_vault_key_id,omitempty"`
+
+	// The geo backup user managed identity id for a Customer Managed Key. Should be added with identity_ids. It can't cross region and need identity in same region as geo backup.
+	GeoBackupUserAssignedIdentityID *string `json:"geoBackupUserAssignedIdentityId,omitempty" tf:"geo_backup_user_assigned_identity_id,omitempty"`
+
 	// The ID of the Key Vault Key.
 	KeyVaultKeyID *string `json:"keyVaultKeyId,omitempty" tf:"key_vault_key_id,omitempty"`
 
@@ -63,6 +69,12 @@ type CustomerManagedKeyInitParameters struct {
 
 type CustomerManagedKeyObservation struct {
 
+	// The ID of the geo backup Key Vault Key. It can't cross region and need Customer Managed Key in same region as geo backup.
+	GeoBackupKeyVaultKeyID *string `json:"geoBackupKeyVaultKeyId,omitempty" tf:"geo_backup_key_vault_key_id,omitempty"`
+
+	// The geo backup user managed identity id for a Customer Managed Key. Should be added with identity_ids. It can't cross region and need identity in same region as geo backup.
+	GeoBackupUserAssignedIdentityID *string `json:"geoBackupUserAssignedIdentityId,omitempty" tf:"geo_backup_user_assigned_identity_id,omitempty"`
+
 	// The ID of the Key Vault Key.
 	KeyVaultKeyID *string `json:"keyVaultKeyId,omitempty" tf:"key_vault_key_id,omitempty"`
 
@@ -71,6 +83,14 @@ type CustomerManagedKeyObservation struct {
 }
 
 type CustomerManagedKeyParameters struct {
+
+	// The ID of the geo backup Key Vault Key. It can't cross region and need Customer Managed Key in same region as geo backup.
+	// +kubebuilder:validation:Optional
+	GeoBackupKeyVaultKeyID *string `json:"geoBackupKeyVaultKeyId,omitempty" tf:"geo_backup_key_vault_key_id,omitempty"`
+
+	// The geo backup user managed identity id for a Customer Managed Key. Should be added with identity_ids. It can't cross region and need identity in same region as geo backup.
+	// +kubebuilder:validation:Optional
+	GeoBackupUserAssignedIdentityID *string `json:"geoBackupUserAssignedIdentityId,omitempty" tf:"geo_backup_user_assigned_identity_id,omitempty"`
 
 	// The ID of the Key Vault Key.
 	// +kubebuilder:validation:Optional
@@ -125,13 +145,13 @@ type FlexibleServerInitParameters struct {
 	// The resource ID of the source PostgreSQL Flexible Server to be restored. Required when create_mode is PointInTimeRestore or Replica. Changing this forces a new PostgreSQL Flexible Server to be created.
 	SourceServerID *string `json:"sourceServerId,omitempty" tf:"source_server_id,omitempty"`
 
-	// The max storage allowed for the PostgreSQL Flexible Server. Possible values are 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, and 16777216.
+	// The max storage allowed for the PostgreSQL Flexible Server. Possible values are 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, 16777216 and 33553408.
 	StorageMb *float64 `json:"storageMb,omitempty" tf:"storage_mb,omitempty"`
 
 	// A mapping of tags which should be assigned to the PostgreSQL Flexible Server.
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
-	// The version of PostgreSQL Flexible Server to use. Possible values are 11,12, 13 and 14. Required when create_mode is Default. Changing this forces a new PostgreSQL Flexible Server to be created.
+	// The version of PostgreSQL Flexible Server to use. Possible values are 11,12, 13, 14 and 15. Required when create_mode is Default. Changing this forces a new PostgreSQL Flexible Server to be created.
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 
 	// Specifies the Availability Zone in which the PostgreSQL Flexible Server should be located.
@@ -200,13 +220,13 @@ type FlexibleServerObservation struct {
 	// The resource ID of the source PostgreSQL Flexible Server to be restored. Required when create_mode is PointInTimeRestore or Replica. Changing this forces a new PostgreSQL Flexible Server to be created.
 	SourceServerID *string `json:"sourceServerId,omitempty" tf:"source_server_id,omitempty"`
 
-	// The max storage allowed for the PostgreSQL Flexible Server. Possible values are 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, and 16777216.
+	// The max storage allowed for the PostgreSQL Flexible Server. Possible values are 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, 16777216 and 33553408.
 	StorageMb *float64 `json:"storageMb,omitempty" tf:"storage_mb,omitempty"`
 
 	// A mapping of tags which should be assigned to the PostgreSQL Flexible Server.
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
-	// The version of PostgreSQL Flexible Server to use. Possible values are 11,12, 13 and 14. Required when create_mode is Default. Changing this forces a new PostgreSQL Flexible Server to be created.
+	// The version of PostgreSQL Flexible Server to use. Possible values are 11,12, 13, 14 and 15. Required when create_mode is Default. Changing this forces a new PostgreSQL Flexible Server to be created.
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 
 	// Specifies the Availability Zone in which the PostgreSQL Flexible Server should be located.
@@ -316,7 +336,7 @@ type FlexibleServerParameters struct {
 	// +kubebuilder:validation:Optional
 	SourceServerID *string `json:"sourceServerId,omitempty" tf:"source_server_id,omitempty"`
 
-	// The max storage allowed for the PostgreSQL Flexible Server. Possible values are 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, and 16777216.
+	// The max storage allowed for the PostgreSQL Flexible Server. Possible values are 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, 16777216 and 33553408.
 	// +kubebuilder:validation:Optional
 	StorageMb *float64 `json:"storageMb,omitempty" tf:"storage_mb,omitempty"`
 
@@ -324,7 +344,7 @@ type FlexibleServerParameters struct {
 	// +kubebuilder:validation:Optional
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
-	// The version of PostgreSQL Flexible Server to use. Possible values are 11,12, 13 and 14. Required when create_mode is Default. Changing this forces a new PostgreSQL Flexible Server to be created.
+	// The version of PostgreSQL Flexible Server to use. Possible values are 11,12, 13, 14 and 15. Required when create_mode is Default. Changing this forces a new PostgreSQL Flexible Server to be created.
 	// +kubebuilder:validation:Optional
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 
@@ -367,7 +387,7 @@ type IdentityInitParameters struct {
 	// A list of User Assigned Managed Identity IDs to be assigned to this PostgreSQL Flexible Server. Required if used together with customer_managed_key block.
 	IdentityIds []*string `json:"identityIds,omitempty" tf:"identity_ids,omitempty"`
 
-	// Specifies the type of Managed Service Identity that should be configured on this PostgreSQL Flexible Server. Should be set to UserAssigned, SystemAssigned, UserAssigned (to enable both).
+	// Specifies the type of Managed Service Identity that should be configured on this PostgreSQL Flexible Server. The only possible value is UserAssigned.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
@@ -376,13 +396,7 @@ type IdentityObservation struct {
 	// A list of User Assigned Managed Identity IDs to be assigned to this PostgreSQL Flexible Server. Required if used together with customer_managed_key block.
 	IdentityIds []*string `json:"identityIds,omitempty" tf:"identity_ids,omitempty"`
 
-	// The ID of the PostgreSQL Flexible Server.
-	PrincipalID *string `json:"principalId,omitempty" tf:"principal_id,omitempty"`
-
-	// The Tenant ID of the Azure Active Directory which is used by the Active Directory authentication. active_directory_auth_enabled must be set to true.
-	TenantID *string `json:"tenantId,omitempty" tf:"tenant_id,omitempty"`
-
-	// Specifies the type of Managed Service Identity that should be configured on this PostgreSQL Flexible Server. Should be set to UserAssigned, SystemAssigned, UserAssigned (to enable both).
+	// Specifies the type of Managed Service Identity that should be configured on this PostgreSQL Flexible Server. The only possible value is UserAssigned.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
@@ -392,7 +406,7 @@ type IdentityParameters struct {
 	// +kubebuilder:validation:Optional
 	IdentityIds []*string `json:"identityIds,omitempty" tf:"identity_ids,omitempty"`
 
-	// Specifies the type of Managed Service Identity that should be configured on this PostgreSQL Flexible Server. Should be set to UserAssigned, SystemAssigned, UserAssigned (to enable both).
+	// Specifies the type of Managed Service Identity that should be configured on this PostgreSQL Flexible Server. The only possible value is UserAssigned.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }

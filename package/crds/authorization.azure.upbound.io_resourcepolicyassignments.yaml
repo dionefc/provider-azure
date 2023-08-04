@@ -106,7 +106,7 @@ spec:
                   name:
                     description: The name which should be used for this Policy Assignment.
                       Changing this forces a new Resource Policy Assignment to be
-                      created.
+                      created. Cannot exceed 64 characters in length.
                     type: string
                   nonComplianceMessage:
                     description: One or more non_compliance_message blocks as defined
@@ -341,7 +341,7 @@ spec:
                   name:
                     description: The name which should be used for this Policy Assignment.
                       Changing this forces a new Resource Policy Assignment to be
-                      created.
+                      created. Cannot exceed 64 characters in length.
                     type: string
                   nonComplianceMessage:
                     description: One or more non_compliance_message blocks as defined
@@ -707,7 +707,7 @@ spec:
                   name:
                     description: The name which should be used for this Policy Assignment.
                       Changing this forces a new Resource Policy Assignment to be
-                      created.
+                      created. Cannot exceed 64 characters in length.
                     type: string
                   nonComplianceMessage:
                     description: One or more non_compliance_message blocks as defined

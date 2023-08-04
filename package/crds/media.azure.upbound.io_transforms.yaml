@@ -940,6 +940,12 @@ spec:
                                       type: array
                                   type: object
                                 type: array
+                              experimentalOptions:
+                                additionalProperties:
+                                  type: string
+                                description: Dictionary containing key value pairs
+                                  for parameters not exposed in the preset itself.
+                                type: object
                               filter:
                                 description: A filter block as defined below.
                                 items:
@@ -2500,6 +2506,12 @@ spec:
                                       type: array
                                   type: object
                                 type: array
+                              experimentalOptions:
+                                additionalProperties:
+                                  type: string
+                                description: Dictionary containing key value pairs
+                                  for parameters not exposed in the preset itself.
+                                type: object
                               filter:
                                 description: A filter block as defined below.
                                 items:
@@ -4177,6 +4189,12 @@ spec:
                                       type: array
                                   type: object
                                 type: array
+                              experimentalOptions:
+                                additionalProperties:
+                                  type: string
+                                description: Dictionary containing key value pairs
+                                  for parameters not exposed in the preset itself.
+                                type: object
                               filter:
                                 description: A filter block as defined below.
                                 items:

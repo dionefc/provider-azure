@@ -1403,8 +1403,8 @@ type LinuxFunctionAppSlotAuthSettingsV2InitParameters struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []AuthSettingsV2CustomOidcV2InitParameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -1484,8 +1484,8 @@ type LinuxFunctionAppSlotAuthSettingsV2Observation struct {
 	// Zero or more custom_oidc_v2 blocks as defined below.
 	CustomOidcV2 []AuthSettingsV2CustomOidcV2Observation `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
 	// The paths which should be excluded from the unauthenticated_action when it is set to RedirectToLoginPage.
@@ -1571,8 +1571,8 @@ type LinuxFunctionAppSlotAuthSettingsV2Parameters struct {
 	// +kubebuilder:validation:Optional
 	CustomOidcV2 []AuthSettingsV2CustomOidcV2Parameters `json:"customOidcV2,omitempty" tf:"custom_oidc_v2,omitempty"`
 
-	// The Default Authentication Provider to use when more than one Authentication Provider is configured and the unauthenticated_action is set to RedirectToLoginPage.
-	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`.
+	// The Default Authentication Provider to use when the unauthenticated_action is set to RedirectToLoginPage. Possible values include: apple, azureactivedirectory, facebook, github, google, twitter and the name of your custom_oidc_v2 provider.
+	// The Default Authentication Provider to use when the `unauthenticated_action` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `custom_oidc_v2` provider.
 	// +kubebuilder:validation:Optional
 	DefaultProvider *string `json:"defaultProvider,omitempty" tf:"default_provider,omitempty"`
 
@@ -1832,6 +1832,9 @@ type LinuxFunctionAppSlotInitParameters struct {
 	// The User Assigned Identity to use for Key Vault access.
 	KeyVaultReferenceIdentityID *string `json:"keyVaultReferenceIdentityId,omitempty" tf:"key_vault_reference_identity_id,omitempty"`
 
+	// Should public network access be enabled for the Function App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
+
 	// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Linux Function App will be used.
 	ServicePlanID *string `json:"servicePlanId,omitempty" tf:"service_plan_id,omitempty"`
 
@@ -1941,6 +1944,9 @@ type LinuxFunctionAppSlotObservation struct {
 
 	// A comma separated list of possible outbound IP addresses as a string. For example 52.23.25.3,52.143.43.12,52.143.43.17. This is a superset of outbound_ip_addresses. For example ["52.23.25.3", "52.143.43.12","52.143.43.17"].
 	PossibleOutboundIPAddresses *string `json:"possibleOutboundIpAddresses,omitempty" tf:"possible_outbound_ip_addresses,omitempty"`
+
+	// Should public network access be enabled for the Function App. Defaults to true.
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
 
 	// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Linux Function App will be used.
 	ServicePlanID *string `json:"servicePlanId,omitempty" tf:"service_plan_id,omitempty"`
@@ -2061,6 +2067,10 @@ type LinuxFunctionAppSlotParameters struct {
 	// The User Assigned Identity to use for Key Vault access.
 	// +kubebuilder:validation:Optional
 	KeyVaultReferenceIdentityID *string `json:"keyVaultReferenceIdentityId,omitempty" tf:"key_vault_reference_identity_id,omitempty"`
+
+	// Should public network access be enabled for the Function App. Defaults to true.
+	// +kubebuilder:validation:Optional
+	PublicNetworkAccessEnabled *bool `json:"publicNetworkAccessEnabled,omitempty" tf:"public_network_access_enabled,omitempty"`
 
 	// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Linux Function App will be used.
 	// +kubebuilder:validation:Optional
@@ -3025,8 +3035,8 @@ type SiteConfigApplicationStackInitParameters struct {
 	// The version of PowerShell Core to use. Possibles values are `7`, and `7.2`
 	PowershellCoreVersion *string `json:"powershellCoreVersion,omitempty" tf:"powershell_core_version,omitempty"`
 
-	// The version of Python to use. Possible values are 3.10, 3.9, 3.8 and 3.7.
-	// The version of Python to use. Possible values include `3.10`, `3.9`, `3.8`, and `3.7`.
+	// The version of Python to use. Possible values are 3.11, 3.10, 3.9, 3.8 and 3.7.
+	// The version of Python to use. Possible values include `3.11`, `3.10`, `3.9`, `3.8`, and `3.7`.
 	PythonVersion *string `json:"pythonVersion,omitempty" tf:"python_version,omitempty"`
 
 	// Should the Linux Function App use a custom runtime?
@@ -3059,8 +3069,8 @@ type SiteConfigApplicationStackObservation struct {
 	// The version of PowerShell Core to use. Possibles values are `7`, and `7.2`
 	PowershellCoreVersion *string `json:"powershellCoreVersion,omitempty" tf:"powershell_core_version,omitempty"`
 
-	// The version of Python to use. Possible values are 3.10, 3.9, 3.8 and 3.7.
-	// The version of Python to use. Possible values include `3.10`, `3.9`, `3.8`, and `3.7`.
+	// The version of Python to use. Possible values are 3.11, 3.10, 3.9, 3.8 and 3.7.
+	// The version of Python to use. Possible values include `3.11`, `3.10`, `3.9`, `3.8`, and `3.7`.
 	PythonVersion *string `json:"pythonVersion,omitempty" tf:"python_version,omitempty"`
 
 	// Should the Linux Function App use a custom runtime?
@@ -3098,8 +3108,8 @@ type SiteConfigApplicationStackParameters struct {
 	// +kubebuilder:validation:Optional
 	PowershellCoreVersion *string `json:"powershellCoreVersion,omitempty" tf:"powershell_core_version,omitempty"`
 
-	// The version of Python to use. Possible values are 3.10, 3.9, 3.8 and 3.7.
-	// The version of Python to use. Possible values include `3.10`, `3.9`, `3.8`, and `3.7`.
+	// The version of Python to use. Possible values are 3.11, 3.10, 3.9, 3.8 and 3.7.
+	// The version of Python to use. Possible values include `3.11`, `3.10`, `3.9`, `3.8`, and `3.7`.
 	// +kubebuilder:validation:Optional
 	PythonVersion *string `json:"pythonVersion,omitempty" tf:"python_version,omitempty"`
 

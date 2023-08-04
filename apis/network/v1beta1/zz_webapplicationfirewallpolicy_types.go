@@ -111,6 +111,87 @@ type ExcludedRuleSetParameters struct {
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
+type LogScrubbingInitParameters struct {
+
+	// Whether this rule is enabled. Defaults to true.
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+
+	// One or more rule block defined below.
+	Rule []LogScrubbingRuleInitParameters `json:"rule,omitempty" tf:"rule,omitempty"`
+}
+
+type LogScrubbingObservation struct {
+
+	// Whether this rule is enabled. Defaults to true.
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+
+	// One or more rule block defined below.
+	Rule []LogScrubbingRuleObservation `json:"rule,omitempty" tf:"rule,omitempty"`
+}
+
+type LogScrubbingParameters struct {
+
+	// Whether this rule is enabled. Defaults to true.
+	// +kubebuilder:validation:Optional
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+
+	// One or more rule block defined below.
+	// +kubebuilder:validation:Optional
+	Rule []LogScrubbingRuleParameters `json:"rule,omitempty" tf:"rule,omitempty"`
+}
+
+type LogScrubbingRuleInitParameters struct {
+
+	// Whether this rule is enabled. Defaults to true.
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+
+	// Specifies the variable to be scrubbed from the logs. Possible values are RequestHeaderNames, RequestCookieNames, RequestArgNames, RequestPostArgNames, RequestJSONArgNames and RequestIPAddress.
+	MatchVariable *string `json:"matchVariable,omitempty" tf:"match_variable,omitempty"`
+
+	// Specifies which elements in the collection this rule applies to.
+	// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
+	Selector *string `json:"selector,omitempty" tf:"selector,omitempty"`
+
+	// Specifies the operating on the selector. Possible values are Equals and EqualsAny. Defaults to Equals.
+	SelectorMatchOperator *string `json:"selectorMatchOperator,omitempty" tf:"selector_match_operator,omitempty"`
+}
+
+type LogScrubbingRuleObservation struct {
+
+	// Whether this rule is enabled. Defaults to true.
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+
+	// Specifies the variable to be scrubbed from the logs. Possible values are RequestHeaderNames, RequestCookieNames, RequestArgNames, RequestPostArgNames, RequestJSONArgNames and RequestIPAddress.
+	MatchVariable *string `json:"matchVariable,omitempty" tf:"match_variable,omitempty"`
+
+	// Specifies which elements in the collection this rule applies to.
+	// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
+	Selector *string `json:"selector,omitempty" tf:"selector,omitempty"`
+
+	// Specifies the operating on the selector. Possible values are Equals and EqualsAny. Defaults to Equals.
+	SelectorMatchOperator *string `json:"selectorMatchOperator,omitempty" tf:"selector_match_operator,omitempty"`
+}
+
+type LogScrubbingRuleParameters struct {
+
+	// Whether this rule is enabled. Defaults to true.
+	// +kubebuilder:validation:Optional
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+
+	// Specifies the variable to be scrubbed from the logs. Possible values are RequestHeaderNames, RequestCookieNames, RequestArgNames, RequestPostArgNames, RequestJSONArgNames and RequestIPAddress.
+	// +kubebuilder:validation:Optional
+	MatchVariable *string `json:"matchVariable,omitempty" tf:"match_variable,omitempty"`
+
+	// Specifies which elements in the collection this rule applies to.
+	// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
+	// +kubebuilder:validation:Optional
+	Selector *string `json:"selector,omitempty" tf:"selector,omitempty"`
+
+	// Specifies the operating on the selector. Possible values are Equals and EqualsAny. Defaults to Equals.
+	// +kubebuilder:validation:Optional
+	SelectorMatchOperator *string `json:"selectorMatchOperator,omitempty" tf:"selector_match_operator,omitempty"`
+}
+
 type ManagedRuleSetInitParameters struct {
 
 	// One or more rule_group_override block defined below.
@@ -155,13 +236,13 @@ type ManagedRulesExclusionInitParameters struct {
 	// One or more excluded_rule_set block defined below.
 	ExcludedRuleSet []ExcludedRuleSetInitParameters `json:"excludedRuleSet,omitempty" tf:"excluded_rule_set,omitempty"`
 
-	// The name of the Match Variable. Possible values: RequestArgKeys, RequestArgNames, RequestArgValues, RequestCookieKeys, RequestCookieNames, RequestCookieValues, RequestHeaderKeys, RequestHeaderNames, RequestHeaderValues.
+	// Specifies the variable to be scrubbed from the logs. Possible values are RequestHeaderNames, RequestCookieNames, RequestArgNames, RequestPostArgNames, RequestJSONArgNames and RequestIPAddress.
 	MatchVariable *string `json:"matchVariable,omitempty" tf:"match_variable,omitempty"`
 
-	// Describes field of the matchVariable collection
+	// Specifies which elements in the collection this rule applies to.
 	Selector *string `json:"selector,omitempty" tf:"selector,omitempty"`
 
-	// Describes operator to be matched. Possible values: Contains, EndsWith, Equals, EqualsAny, StartsWith.
+	// Specifies the operating on the selector. Possible values are Equals and EqualsAny. Defaults to Equals.
 	SelectorMatchOperator *string `json:"selectorMatchOperator,omitempty" tf:"selector_match_operator,omitempty"`
 }
 
@@ -170,13 +251,13 @@ type ManagedRulesExclusionObservation struct {
 	// One or more excluded_rule_set block defined below.
 	ExcludedRuleSet []ExcludedRuleSetObservation `json:"excludedRuleSet,omitempty" tf:"excluded_rule_set,omitempty"`
 
-	// The name of the Match Variable. Possible values: RequestArgKeys, RequestArgNames, RequestArgValues, RequestCookieKeys, RequestCookieNames, RequestCookieValues, RequestHeaderKeys, RequestHeaderNames, RequestHeaderValues.
+	// Specifies the variable to be scrubbed from the logs. Possible values are RequestHeaderNames, RequestCookieNames, RequestArgNames, RequestPostArgNames, RequestJSONArgNames and RequestIPAddress.
 	MatchVariable *string `json:"matchVariable,omitempty" tf:"match_variable,omitempty"`
 
-	// Describes field of the matchVariable collection
+	// Specifies which elements in the collection this rule applies to.
 	Selector *string `json:"selector,omitempty" tf:"selector,omitempty"`
 
-	// Describes operator to be matched. Possible values: Contains, EndsWith, Equals, EqualsAny, StartsWith.
+	// Specifies the operating on the selector. Possible values are Equals and EqualsAny. Defaults to Equals.
 	SelectorMatchOperator *string `json:"selectorMatchOperator,omitempty" tf:"selector_match_operator,omitempty"`
 }
 
@@ -186,15 +267,15 @@ type ManagedRulesExclusionParameters struct {
 	// +kubebuilder:validation:Optional
 	ExcludedRuleSet []ExcludedRuleSetParameters `json:"excludedRuleSet,omitempty" tf:"excluded_rule_set,omitempty"`
 
-	// The name of the Match Variable. Possible values: RequestArgKeys, RequestArgNames, RequestArgValues, RequestCookieKeys, RequestCookieNames, RequestCookieValues, RequestHeaderKeys, RequestHeaderNames, RequestHeaderValues.
+	// Specifies the variable to be scrubbed from the logs. Possible values are RequestHeaderNames, RequestCookieNames, RequestArgNames, RequestPostArgNames, RequestJSONArgNames and RequestIPAddress.
 	// +kubebuilder:validation:Optional
 	MatchVariable *string `json:"matchVariable,omitempty" tf:"match_variable,omitempty"`
 
-	// Describes field of the matchVariable collection
+	// Specifies which elements in the collection this rule applies to.
 	// +kubebuilder:validation:Optional
 	Selector *string `json:"selector,omitempty" tf:"selector,omitempty"`
 
-	// Describes operator to be matched. Possible values: Contains, EndsWith, Equals, EqualsAny, StartsWith.
+	// Specifies the operating on the selector. Possible values are Equals and EqualsAny. Defaults to Equals.
 	// +kubebuilder:validation:Optional
 	SelectorMatchOperator *string `json:"selectorMatchOperator,omitempty" tf:"selector_match_operator,omitempty"`
 }
@@ -289,7 +370,7 @@ type MatchConditionsParameters struct {
 
 type MatchVariablesInitParameters struct {
 
-	// Describes field of the matchVariable collection
+	// Specifies which elements in the collection this rule applies to.
 	Selector *string `json:"selector,omitempty" tf:"selector,omitempty"`
 
 	// The name of the Match Variable. Possible values are RemoteAddr, RequestMethod, QueryString, PostArgs, RequestUri, RequestHeaders, RequestBody and RequestCookies.
@@ -298,7 +379,7 @@ type MatchVariablesInitParameters struct {
 
 type MatchVariablesObservation struct {
 
-	// Describes field of the matchVariable collection
+	// Specifies which elements in the collection this rule applies to.
 	Selector *string `json:"selector,omitempty" tf:"selector,omitempty"`
 
 	// The name of the Match Variable. Possible values are RemoteAddr, RequestMethod, QueryString, PostArgs, RequestUri, RequestHeaders, RequestBody and RequestCookies.
@@ -307,7 +388,7 @@ type MatchVariablesObservation struct {
 
 type MatchVariablesParameters struct {
 
-	// Describes field of the matchVariable collection
+	// Specifies which elements in the collection this rule applies to.
 	// +kubebuilder:validation:Optional
 	Selector *string `json:"selector,omitempty" tf:"selector,omitempty"`
 
@@ -323,6 +404,9 @@ type PolicySettingsInitParameters struct {
 
 	// The File Upload Limit in MB. Accepted values are in the range 1 to 4000. Defaults to 100.
 	FileUploadLimitInMb *float64 `json:"fileUploadLimitInMb,omitempty" tf:"file_upload_limit_in_mb,omitempty"`
+
+	// One log_scrubbing block as defined below.
+	LogScrubbing []LogScrubbingInitParameters `json:"logScrubbing,omitempty" tf:"log_scrubbing,omitempty"`
 
 	// The Maximum Request Body Size in KB. Accepted values are in the range 8 to 2000. Defaults to 128.
 	MaxRequestBodySizeInKb *float64 `json:"maxRequestBodySizeInKb,omitempty" tf:"max_request_body_size_in_kb,omitempty"`
@@ -341,6 +425,9 @@ type PolicySettingsObservation struct {
 
 	// The File Upload Limit in MB. Accepted values are in the range 1 to 4000. Defaults to 100.
 	FileUploadLimitInMb *float64 `json:"fileUploadLimitInMb,omitempty" tf:"file_upload_limit_in_mb,omitempty"`
+
+	// One log_scrubbing block as defined below.
+	LogScrubbing []LogScrubbingObservation `json:"logScrubbing,omitempty" tf:"log_scrubbing,omitempty"`
 
 	// The Maximum Request Body Size in KB. Accepted values are in the range 8 to 2000. Defaults to 128.
 	MaxRequestBodySizeInKb *float64 `json:"maxRequestBodySizeInKb,omitempty" tf:"max_request_body_size_in_kb,omitempty"`
@@ -361,6 +448,10 @@ type PolicySettingsParameters struct {
 	// The File Upload Limit in MB. Accepted values are in the range 1 to 4000. Defaults to 100.
 	// +kubebuilder:validation:Optional
 	FileUploadLimitInMb *float64 `json:"fileUploadLimitInMb,omitempty" tf:"file_upload_limit_in_mb,omitempty"`
+
+	// One log_scrubbing block as defined below.
+	// +kubebuilder:validation:Optional
+	LogScrubbing []LogScrubbingParameters `json:"logScrubbing,omitempty" tf:"log_scrubbing,omitempty"`
 
 	// The Maximum Request Body Size in KB. Accepted values are in the range 8 to 2000. Defaults to 128.
 	// +kubebuilder:validation:Optional
@@ -432,7 +523,7 @@ type RuleGroupOverrideRuleInitParameters struct {
 	// Describes the override action to be applied when rule matches. Possible values are Allow, AnomalyScoring, Block and Log.
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// Describes if the managed rule is in enabled state or disabled state.
+	// Whether this rule is enabled. Defaults to true.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
 	// Identifier for the managed rule.
@@ -444,7 +535,7 @@ type RuleGroupOverrideRuleObservation struct {
 	// Describes the override action to be applied when rule matches. Possible values are Allow, AnomalyScoring, Block and Log.
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// Describes if the managed rule is in enabled state or disabled state.
+	// Whether this rule is enabled. Defaults to true.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
 	// Identifier for the managed rule.
@@ -457,7 +548,7 @@ type RuleGroupOverrideRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// Describes if the managed rule is in enabled state or disabled state.
+	// Whether this rule is enabled. Defaults to true.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 

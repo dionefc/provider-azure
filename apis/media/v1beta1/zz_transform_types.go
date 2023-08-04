@@ -390,6 +390,9 @@ type CustomPresetInitParameters struct {
 	// One or more codec blocks as defined above.
 	Codec []CodecInitParameters `json:"codec,omitempty" tf:"codec,omitempty"`
 
+	// Dictionary containing key value pairs for parameters not exposed in the preset itself.
+	ExperimentalOptions map[string]*string `json:"experimentalOptions,omitempty" tf:"experimental_options,omitempty"`
+
 	// A filter block as defined below.
 	Filter []FilterInitParameters `json:"filter,omitempty" tf:"filter,omitempty"`
 
@@ -401,6 +404,9 @@ type CustomPresetObservation struct {
 
 	// One or more codec blocks as defined above.
 	Codec []CodecObservation `json:"codec,omitempty" tf:"codec,omitempty"`
+
+	// Dictionary containing key value pairs for parameters not exposed in the preset itself.
+	ExperimentalOptions map[string]*string `json:"experimentalOptions,omitempty" tf:"experimental_options,omitempty"`
 
 	// A filter block as defined below.
 	Filter []FilterObservation `json:"filter,omitempty" tf:"filter,omitempty"`
@@ -414,6 +420,10 @@ type CustomPresetParameters struct {
 	// One or more codec blocks as defined above.
 	// +kubebuilder:validation:Optional
 	Codec []CodecParameters `json:"codec,omitempty" tf:"codec,omitempty"`
+
+	// Dictionary containing key value pairs for parameters not exposed in the preset itself.
+	// +kubebuilder:validation:Optional
+	ExperimentalOptions map[string]*string `json:"experimentalOptions,omitempty" tf:"experimental_options,omitempty"`
 
 	// A filter block as defined below.
 	// +kubebuilder:validation:Optional

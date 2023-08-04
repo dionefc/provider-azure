@@ -30,6 +30,9 @@ type ComputeClusterInitParameters struct {
 	// The name which should be used for this Machine Learning Compute Cluster. Changing this forces a new Machine Learning Compute Cluster to be created.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// Whether the compute cluster will have a public ip. To set this to false a subnet_resource_id needs to be set. Defaults to true. Changing this forces a new Machine Learning Compute Cluster to be created.
+	NodePublicIPEnabled *bool `json:"nodePublicIpEnabled,omitempty" tf:"node_public_ip_enabled,omitempty"`
+
 	// Credentials for an administrator user account that will be created on each compute node. A ssh block as defined below. Changing this forces a new Machine Learning Compute Cluster to be created.
 	SSH []SSHInitParameters `json:"ssh,omitempty" tf:"ssh,omitempty"`
 
@@ -71,6 +74,9 @@ type ComputeClusterObservation struct {
 
 	// The name which should be used for this Machine Learning Compute Cluster. Changing this forces a new Machine Learning Compute Cluster to be created.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// Whether the compute cluster will have a public ip. To set this to false a subnet_resource_id needs to be set. Defaults to true. Changing this forces a new Machine Learning Compute Cluster to be created.
+	NodePublicIPEnabled *bool `json:"nodePublicIpEnabled,omitempty" tf:"node_public_ip_enabled,omitempty"`
 
 	// Credentials for an administrator user account that will be created on each compute node. A ssh block as defined below. Changing this forces a new Machine Learning Compute Cluster to be created.
 	SSH []SSHObservation `json:"ssh,omitempty" tf:"ssh,omitempty"`
@@ -129,6 +135,10 @@ type ComputeClusterParameters struct {
 	// The name which should be used for this Machine Learning Compute Cluster. Changing this forces a new Machine Learning Compute Cluster to be created.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// Whether the compute cluster will have a public ip. To set this to false a subnet_resource_id needs to be set. Defaults to true. Changing this forces a new Machine Learning Compute Cluster to be created.
+	// +kubebuilder:validation:Optional
+	NodePublicIPEnabled *bool `json:"nodePublicIpEnabled,omitempty" tf:"node_public_ip_enabled,omitempty"`
 
 	// Credentials for an administrator user account that will be created on each compute node. A ssh block as defined below. Changing this forces a new Machine Learning Compute Cluster to be created.
 	// +kubebuilder:validation:Optional

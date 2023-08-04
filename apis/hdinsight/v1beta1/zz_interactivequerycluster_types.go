@@ -14,30 +14,22 @@ import (
 )
 
 type AutoscaleCapacityInitParameters struct {
-
-	// The maximum number of worker nodes to autoscale to based on the cluster's activity.
 	MaxInstanceCount *float64 `json:"maxInstanceCount,omitempty" tf:"max_instance_count,omitempty"`
 
-	// The minimum number of worker nodes to autoscale to based on the cluster's activity.
 	MinInstanceCount *float64 `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
 }
 
 type AutoscaleCapacityObservation struct {
-
-	// The maximum number of worker nodes to autoscale to based on the cluster's activity.
 	MaxInstanceCount *float64 `json:"maxInstanceCount,omitempty" tf:"max_instance_count,omitempty"`
 
-	// The minimum number of worker nodes to autoscale to based on the cluster's activity.
 	MinInstanceCount *float64 `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
 }
 
 type AutoscaleCapacityParameters struct {
 
-	// The maximum number of worker nodes to autoscale to based on the cluster's activity.
 	// +kubebuilder:validation:Optional
 	MaxInstanceCount *float64 `json:"maxInstanceCount,omitempty" tf:"max_instance_count,omitempty"`
 
-	// The minimum number of worker nodes to autoscale to based on the cluster's activity.
 	// +kubebuilder:validation:Optional
 	MinInstanceCount *float64 `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
 }
@@ -1247,8 +1239,6 @@ type RolesHeadNodeScriptActionsParameters struct {
 }
 
 type RolesWorkerNodeAutoscaleInitParameters struct {
-
-	// A capacity block as defined below.
 	Capacity []AutoscaleCapacityInitParameters `json:"capacity,omitempty" tf:"capacity,omitempty"`
 
 	// A recurrence block as defined below.
@@ -1256,8 +1246,6 @@ type RolesWorkerNodeAutoscaleInitParameters struct {
 }
 
 type RolesWorkerNodeAutoscaleObservation struct {
-
-	// A capacity block as defined below.
 	Capacity []AutoscaleCapacityObservation `json:"capacity,omitempty" tf:"capacity,omitempty"`
 
 	// A recurrence block as defined below.
@@ -1266,7 +1254,6 @@ type RolesWorkerNodeAutoscaleObservation struct {
 
 type RolesWorkerNodeAutoscaleParameters struct {
 
-	// A capacity block as defined below.
 	// +kubebuilder:validation:Optional
 	Capacity []AutoscaleCapacityParameters `json:"capacity,omitempty" tf:"capacity,omitempty"`
 

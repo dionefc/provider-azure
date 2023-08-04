@@ -2330,6 +2330,16 @@ func (in *IdentityObservation) DeepCopyInto(out *IdentityObservation) {
 			}
 		}
 	}
+	if in.PrincipalID != nil {
+		in, out := &in.PrincipalID, &out.PrincipalID
+		*out = new(string)
+		**out = **in
+	}
+	if in.TenantID != nil {
+		in, out := &in.TenantID, &out.TenantID
+		*out = new(string)
+		**out = **in
+	}
 	if in.Type != nil {
 		in, out := &in.Type, &out.Type
 		*out = new(string)
